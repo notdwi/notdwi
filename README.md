@@ -68,23 +68,6 @@
 
 <br>
 
-<div align="center">
-<h3>📊 Statistics</h3>
-</div>
-
----
-
-
-<br>
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=inotyu&bg_color=000000&color=F72585&line=F72585&point=ffffff&area=true&hide_border=true"/>
-</p>
-
----
-
-
-
 <p align="center">
   <i>"building random things until they become real projects."</i>
 </p>
