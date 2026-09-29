@@ -3,8 +3,9 @@
 ## Full-Stack Developer
 
 * 🌍  I'm based in Brazil
-* ✉️  You can contact me at [dwi@haunt.gg](mailto:dwi@haunt.gg)
 * 🚀  I'm currently working on Noctyra
+* ✉️  You can contact me at [dwi@haunt.gg](mailto:dwi@haunt.gg)
+* 🌐 Portfolio: [dwi.best](https://dwi.best)
 
 ## Stacks
 
