@@ -35,8 +35,8 @@ jobs:
               end = text.find('</a>', start)
               if end != -1:
                   text = text[:start] + text[end+4:]
-          text = text.replace('assets/social-2-dark.svg"', 'assets/social-2-dark.svg?v=2"')
-          text = text.replace('assets/social-2-light.svg"', 'assets/social-2-light.svg?v=2"')
+          text = text.replace('assets/social-2-dark.svg"', 'assets/social-2-dark.svg?v=3"')
+          text = text.replace('assets/social-2-light.svg"', 'assets/social-2-light.svg?v=3"')
           path.write_text(text, encoding="utf-8")
           PY
 
