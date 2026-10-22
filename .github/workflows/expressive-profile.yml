@@ -35,8 +35,11 @@ jobs:
               end = text.find('</a>', start)
               if end != -1:
                   text = text[:start] + text[end+4:]
-          text = text.replace('assets/social-2-dark.svg"', 'assets/social-2-dark.svg?v=3"')
-          text = text.replace('assets/social-2-light.svg"', 'assets/social-2-light.svg?v=3"')
+          from shutil import copyfile
+          for theme in ("dark", "light"):
+              copyfile(f"assets/social-2-{theme}.svg", f"assets/social-portfolio-{theme}.svg")
+              text = text.replace(f"assets/social-2-{theme}.svg?v=3", f"assets/social-portfolio-{theme}.svg")
+              text = text.replace(f"assets/social-2-{theme}.svg", f"assets/social-portfolio-{theme}.svg")
           path.write_text(text, encoding="utf-8")
           PY
 
@@ -44,6 +47,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
+          git add README.md assets/social-portfolio-dark.svg assets/social-portfolio-light.svg
           git diff --cached --quiet || git commit -m "Remove Expressive Profile credit"
           git push
