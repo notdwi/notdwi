@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "login": "notdwi",
+  "seed": "#05080F",
+  "seedFromAvatar": true,
+  "scheme": "tonalSpot",
+  "motion": true,
+  "iconFill": true,
+  "order": [
+    "hero",
+    "socials",
+    "about",
+    "stack",
+    "projects",
+    "stats",
+    "streak",
+    "wave",
+    "buttons"
+  ],
+  "hidden": [
+    "buttons",
+    "stack",
+    "streak"
+  ],
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Gean",
+    "subtitle": "Full-stack developer crafting web apps, APIs and data pipelines.",
+    "typing": false,
+    "avatarShape": "cookie",
+    "chips": [
+      {
+        "icon": "location_on",
+        "label": "Brasília, Brazil"
+      },
+      {
+        "icon": "person",
+        "label": "aka Dwi"
+      }
+    ]
+  },
+  "about": {
+    "title": "About me",
+    "items": [
+      {
+        "icon": "person",
+        "label": " Full-stack developer building web apps, REST APIs and large-scale crawlers"
+      },
+      {
+        "icon": "code",
+        "label": "Always learning something new in the TypeScript / Python / Go world"
+      },
+      {
+        "icon": "favorite",
+        "label": " Big fan of clean APIs, fast services and good developer experience"
+      },
+      {
+        "icon": "terminal",
+        "label": "From database modeling to polished interfaces — I enjoy the whole stack"
+      }
+    ]
+  },
+  "stack": {
+    "title": "Tech stack",
+    "groups": [
+      {
+        "title": "Main",
+        "items": [
+          {
+            "icon": "brand:typescript",
+            "label": "TypeScript"
+          },
+          {
+            "icon": "brand:python",
+            "label": "Python"
+          },
+          {
+            "icon": "brand:go",
+            "label": "Go"
+          }
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          {
+            "icon": "brand:git",
+            "label": "Git"
+          },
+          {
+            "icon": "brand:githubactions",
+            "label": "GitHub Actions"
+          },
+          {
+            "icon": "brand:react",
+            "label": "React"
+          }
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "source": "manual",
+    "repos": [
+      "veil",
+      "KoeWeeb",
+      "PokeCenter",
+      "HyprOnline"
+    ],
+    "overrides": {
+      "veil": {
+        "text": "Privacy-first API client for fast, local API testing."
+      },
+      "KoeWeeb": {
+        "text": "Modern manga reader with smart scraping and a clean reader."
+      },
+      "PokeCenter": {
+        "text": "Full-stack Pokémon Center management system with JWT auth."
+      },
+      "HyprOnline": {
+        "text": "Terminal anime assistant with scraping and direct streaming."
+      }
+    },
+    "empty": "No description yet.",
+    "fork": "Fork"
+  },
+  "stats": {
+    "title": "GitHub activity",
+    "stars": "Stars earned",
+    "contributions": "Contributions this year",
+    "repos": "Public repos",
+    "followers": "Followers",
+    "calendar": "Last 21 days",
+    "weekdays": "SMTWTFS",
+    "languages": "Languages across my repositories",
+    "showLanguages": true
+  },
+  "streak": {
+    "title": "Streak",
+    "current": "Current streak",
+    "longest": "Longest this year",
+    "days": "days"
+  },
+  "socials": {
+    "items": [
+      {
+        "icon": "brand:github",
+        "url": "https://github.com/notdwi"
+      },
+      {
+        "icon": "brand:linkedin",
+        "url": "https://www.linkedin.com/in/geansystem/"
+      }
+    ],
+    "variant": "chip",
+    "fill": "tonal",
+    "card": true
+  },
+  "buttons": {
+    "items": [
+      {
+        "icon": "language",
+        "label": "Portfolio",
+        "url": "https://dwi.best",
+        "style": "filled"
+      },
+      {
+        "icon": "book_2",
+        "label": "All repositories",
+        "url": "",
+        "style": "tonal"
+      }
+    ]
+  }
+}
