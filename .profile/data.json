@@ -1,0 +1,240 @@
+{
+ "key": "42bc71ff",
+ "stars": 7,
+ "contributions": 396,
+ "repos": 8,
+ "followers": 18,
+ "languages": [
+  [
+   "TypeScript",
+   466783
+  ],
+  [
+   "Python",
+   342428
+  ],
+  [
+   "JavaScript",
+   295313
+  ],
+  [
+   "Rust",
+   276353
+  ],
+  [
+   "CSS",
+   79702
+  ],
+  [
+   "C#",
+   23929
+  ],
+  [
+   "PLpgSQL",
+   14448
+  ]
+ ],
+ "days": [
+  [
+   {
+    "c": 0,
+    "day": 4,
+    "today": false
+   },
+   {
+    "c": 18,
+    "day": 5,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 6,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 7,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 8,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 9,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 10,
+    "today": false
+   }
+  ],
+  [
+   {
+    "c": 5,
+    "day": 11,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 12,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 13,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 14,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 15,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 16,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 17,
+    "today": false
+   }
+  ],
+  [
+   {
+    "c": 0,
+    "day": 18,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 19,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 20,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 21,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 22,
+    "today": true
+   },
+   null,
+   null
+  ]
+ ],
+ "streak": {
+  "current": 0,
+  "longest": 5
+ },
+ "pins": [
+  {
+   "name": "veil",
+   "url": "https://github.com/notdwi/veil",
+   "text": "VEIL — A lightweight, privacy-focused API client inspired by Persona 5, built with Rust, Tauri and React. Designed for fast, simple and local API testing.",
+   "fork": false,
+   "stars": 2,
+   "language": "TypeScript",
+   "topics": []
+  },
+  {
+   "name": "HyprOnline",
+   "url": "https://github.com/notdwi/HyprOnline",
+   "text": "🖥️ HyprOnline - Assistente de animes para terminal com scraping inteligente. Assista seus animes favoritos diretamente no terminal sem anúncios ou navegador. Interface CLI moderna e streaming otimizado.",
+   "fork": false,
+   "stars": 2,
+   "language": "Python",
+   "topics": []
+  }
+ ],
+ "all": [
+  {
+   "name": "veil",
+   "url": "https://github.com/notdwi/veil",
+   "text": "VEIL — A lightweight, privacy-focused API client inspired by Persona 5, built with Rust, Tauri and React. Designed for fast, simple and local API testing.",
+   "fork": false,
+   "stars": 2,
+   "language": "TypeScript",
+   "topics": []
+  },
+  {
+   "name": "HyprOnline",
+   "url": "https://github.com/notdwi/HyprOnline",
+   "text": "🖥️ HyprOnline - Assistente de animes para terminal com scraping inteligente. Assista seus animes favoritos diretamente no terminal sem anúncios ou navegador. Interface CLI moderna e streaming otimizado.",
+   "fork": false,
+   "stars": 2,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "PokeCenter",
+   "url": "https://github.com/notdwi/PokeCenter",
+   "text": "🐾 Pokémon Center - Sistema completo de gerenciamento de Pokémons para Centro Pokémon. CRUD de Pokémons, autenticação JWT, interface administrativa responsiva. Stack moderno com Next.js, NestJS, TypeScript e PostgreSQL",
+   "fork": false,
+   "stars": 1,
+   "language": "TypeScript",
+   "topics": []
+  },
+  {
+   "name": "KoeWeeb",
+   "url": "https://github.com/notdwi/KoeWeeb",
+   "text": "📚 KoeWeeb - Leitor de mangás online moderno com scraping inteligente, interface responsiva e leitor avançado. Acesse milhares de títulos gratuitamente.",
+   "fork": false,
+   "stars": 1,
+   "language": null,
+   "topics": []
+  },
+  {
+   "name": "notdwi",
+   "url": "https://github.com/notdwi/notdwi",
+   "text": "Desenvolvedor full-stack de 20 anos, especialista em Python, JavaScript, React e Vue.js. Criador do KoeWeeb (leitor de mangás) e ProjectAI (SaaS de IA). Apaixonado por criar soluções inovadoras e resolver problemas complexos.",
+   "fork": false,
+   "stars": 1,
+   "language": null,
+   "topics": []
+  },
+  {
+   "name": "DesafioTarget",
+   "url": "https://github.com/notdwi/DesafioTarget",
+   "text": "Solução em C#/.NET 8 para o desafio técnico da Target Sistemas. Inclui processamento de JSON, cálculos financeiros, gestão de estoque via CLI e cobertura de testes unitários com xUnit, seguindo princípios de Clean Code.",
+   "fork": false,
+   "stars": 0,
+   "language": "C#",
+   "topics": []
+  },
+  {
+   "name": "vanguard",
+   "url": "https://github.com/notdwi/vanguard",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "Rust",
+   "topics": []
+  },
+  {
+   "name": "InstaLoop",
+   "url": "https://github.com/notdwi/InstaLoop",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  }
+ ]
+}
