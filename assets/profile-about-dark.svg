@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="104" viewBox="0 0 800 104" role="img" aria-labelledby="title"><title id="title">Full-stack developer based in Brazil. Currently building Noctyra. Into Linux, anime and clean APIs.</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="104" viewBox="0 0 800 104" role="img" aria-labelledby="title"><title id="title">I build web applications, APIs and developer tools. Currently building Noctyra, from the interface to the database.</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
 .reveal{animation:reveal 1.2s ease-out both}
 .pulse{animation:pulse 3.4s ease-in-out infinite}
 @keyframes reveal{from{opacity:0}to{opacity:1}}
 @keyframes pulse{50%{opacity:.3}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><g class="reveal"><text x="4" y="33" font-size="25" fill="#f0e8ef">Full-stack developer. Based in Brazil.</text><circle cx="10" cy="72" r="4" fill="#aecab5" class="pulse"/><text x="26" y="79" font-size="21" fill="#bcb0c1">Currently building Noctyra. Into Linux, anime &amp; clean APIs.</text></g></svg>
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><g class="reveal"><text x="4" y="33" font-size="25" fill="#f0e8ef">I build web applications, APIs and developer tools.</text><circle cx="10" cy="72" r="4" fill="#aecab5" class="pulse"/><text x="26" y="79" font-size="21" fill="#bcb0c1">Currently building Noctyra, from the interface to the database.</text></g></svg>

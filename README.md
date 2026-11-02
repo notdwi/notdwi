@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/saiki-cover.svg" width="100%" alt="Hey, I’m Gean — full-stack developer. Saiki Kusuo enjoying coffee jelly.">
+  <img src="assets/saiki-cover.svg" width="100%" alt="Hey, I’m Gean — Full-stack Software Developer. Saiki Kusuo enjoying coffee jelly.">
 </p>
 
 <p align="center">
@@ -8,9 +8,9 @@
   <a href="https://github.com/notdwi?tab=repositories"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/contact-github-dark.svg"><img src="assets/contact-github-light.svg" width="31%" alt="Explore my repositories"></picture></a>
 </p>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-about-dark.svg"><img src="assets/profile-about-light.svg" width="100%" alt="Full-stack developer based in Brazil, currently building Noctyra. Into Linux, anime and clean APIs."></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-about-dark.svg"><img src="assets/profile-about-light.svg" width="100%" alt="I build web applications, APIs and developer tools. Currently building Noctyra, from the interface to the database."></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/heading-stack-dark.svg"><img src="assets/heading-stack-light.svg" width="100%" alt="What I work with"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/heading-stack-dark.svg"><img src="assets/heading-stack-light.svg" width="100%" alt="Technologies"></picture>
 
 <p align="center">
   <a href="https://www.typescriptlang.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/tech-typescript-dark.svg"><img src="assets/tech-typescript-light.svg" width="24%" alt="TypeScript"></picture></a>

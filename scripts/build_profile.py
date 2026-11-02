@@ -22,10 +22,10 @@ def build():
 <rect width="1000" height="340" fill="url(#shade)"/>
 <g class="reveal"><text x="48" y="103" font-size="17" fill="#c9bccb">やれやれ。</text>
 <text x="46" y="170" fill="#f4edf3" font-size="60" font-weight="700" letter-spacing="-3">hey, i'm gean.</text>
-<text x="49" y="208" fill="#e7a2bf" font-size="20">Full-stack developer</text>
-<text x="49" y="249" fill="#c9bccb" font-size="16">Building things. Keeping it simple.</text>
+<text x="49" y="208" fill="#e7a2bf" font-size="20">Full-stack Software Developer</text>
+<text x="49" y="249" fill="#c9bccb" font-size="16">Thoughtful interfaces. Reliable systems.</text>
 <circle class="pulse" cx="53" cy="292" r="3" fill="#a8c6ae"/>
-<text x="65" y="297" fill="#c9bccb" font-size="13">Brazil / @notdwi</text></g></g>''','Gean / notdwi — Full-stack developer. Saiki Kusuo with pink hair, green glasses and coffee jelly.')
+<text x="65" y="297" fill="#c9bccb" font-size="13">Brazil / @notdwi</text></g></g>''','Gean / notdwi — Full-stack Software Developer. Saiki Kusuo with pink hair, green glasses and coffee jelly.')
     for theme, ink, muted, line, accent in [('dark','#e8dee8','#b7aaba','#39303e','#e7a2bf'),('light','#352b3a','#706376','#e9dfe9','#9d426a')]:
         svg(f'saiki-note-{theme}.svg',1000,54,f'<path d="M0 27h360m280 0h360" stroke="{line}"/><text x="500" y="33" text-anchor="middle" font-size="14" fill="{muted}">code, coffee jelly, repeat.</text>', 'Code, coffee jelly, repeat.')
         labels = ['TypeScript','Python','Go','React','Next.js','PostgreSQL','Linux']
@@ -63,8 +63,8 @@ def build_components():
             content += '<g class="reveal">'+icon(glyph,22,24,28,pink)
             content += f'<text x="67" y="46" font-size="23" fill="{ink}">{label}</text><path d="m223 43 10-10m-10 0h10v10" fill="none" stroke="{sage}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>'
             svg(f'contact-{slug}-{theme}.svg',260,76,content,label)
-        svg(f'profile-about-{theme}.svg',800,104,f'<g class="reveal"><text x="4" y="33" font-size="25" fill="{ink}">Full-stack developer. Based in Brazil.</text><circle cx="10" cy="72" r="4" fill="{sage}" class="pulse"/><text x="26" y="79" font-size="21" fill="{muted}">Currently building Noctyra. Into Linux, anime &amp; clean APIs.</text></g>','Full-stack developer based in Brazil. Currently building Noctyra. Into Linux, anime and clean APIs.')
-        for slug, title in [('stack','What I work with'),('projects','Selected projects')]:
+        svg(f'profile-about-{theme}.svg',800,104,f'<g class="reveal"><text x="4" y="33" font-size="25" fill="{ink}">I build web applications, APIs and developer tools.</text><circle cx="10" cy="72" r="4" fill="{sage}" class="pulse"/><text x="26" y="79" font-size="21" fill="{muted}">Currently building Noctyra, from the interface to the database.</text></g>','I build web applications, APIs and developer tools. Currently building Noctyra, from the interface to the database.')
+        for slug, title in [('stack','Technologies'),('projects','Selected projects')]:
             svg(f'heading-{slug}-{theme}.svg',800,64,f'<text x="4" y="43" font-size="29" font-weight="600" fill="{ink}">{title}</text><path d="M{340 if slug=="stack" else 320} 34h{440 if slug=="stack" else 460}" stroke="{line}"/>',title)
         techs = [('typescript','TypeScript'),('python','Python'),('go','Go'),('react','React'),('nextjs','Next.js'),('vuedotjs','Vue'),('database','PostgreSQL'),('archlinux','Linux')]
         for n,(glyph,label) in enumerate(techs):
@@ -73,10 +73,10 @@ def build_components():
             content+=f'<text x="57" y="46" font-size="21" fill="{ink}">{label}</text></g>'
             svg(f'tech-{glyph}-{theme}.svg',200,76,content,label)
         projects=[
-            ('veil','veil','code','An API client that stays local.','Privacy-first. Inspired by Persona 5.','Rust / Tauri / React'),
-            ('hypronline','HyprOnline','terminal','Your next anime. In your terminal.','Search, scrape and stream directly.','Python / CLI / Streaming'),
-            ('koeweeb','KoeWeeb','book','Less clutter. More manga.','Smart scraping. A focused reader.','Web / Scraping / Manga'),
-            ('pokecenter','PokeCenter','pokeball','A home for every Pokémon.','Management, authentication & data.','Next.js / NestJS / PostgreSQL'),
+            ('veil','veil','code','A privacy-focused API client.','Local testing with Rust and Tauri.','Rust / Tauri / React'),
+            ('hypronline','HyprOnline','terminal','Anime search in your terminal.','Scraping and direct video streaming.','Python / CLI / Streaming'),
+            ('koeweeb','KoeWeeb','book','A web-based manga reader.','Scraping with a focused reading UI.','Web / Scraping / Manga'),
+            ('pokecenter','PokeCenter','pokeball','Pokémon management platform.','JWT authentication and admin tools.','Next.js / NestJS / PostgreSQL'),
         ]
         for n,(slug,title,glyph,desc,detail,stack) in enumerate(projects):
             accent=pink if n%2==0 else sage
@@ -89,11 +89,11 @@ def build_components():
             svg(f'card-{slug}-{theme}.svg',420,205,content,f'{title}: {desc} {detail} {stack}')
     def picture(stem,alt,width='100%'):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="assets/{stem}-dark.svg"><img src="assets/{stem}-light.svg" width="{width}" alt="{escape(alt,quote=True)}"></picture>'
-    text='<p align="center">\n  <img src="assets/saiki-cover.svg" width="100%" alt="Hey, I’m Gean — full-stack developer. Saiki Kusuo enjoying coffee jelly.">\n</p>\n\n<p align="center">\n'
+    text='<p align="center">\n  <img src="assets/saiki-cover.svg" width="100%" alt="Hey, I’m Gean — Full-stack Software Developer. Saiki Kusuo enjoying coffee jelly.">\n</p>\n\n<p align="center">\n'
     for slug, link, title in [('portfolio','https://dwi.best','Visit my portfolio'),('email','mailto:dwi@haunt.gg','Email dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Explore my repositories')]:
         text+=f'  <a href="{link}">{picture("contact-"+slug,title,"31%")}</a>\n'
-    text+='</p>\n\n'+picture('profile-about','Full-stack developer based in Brazil, currently building Noctyra. Into Linux, anime and clean APIs.')+'\n\n'
-    text+=picture('heading-stack','What I work with')+'\n\n<p align="center">\n'
+    text+='</p>\n\n'+picture('profile-about','I build web applications, APIs and developer tools. Currently building Noctyra, from the interface to the database.')+'\n\n'
+    text+=picture('heading-stack','Technologies')+'\n\n<p align="center">\n'
     urls={'typescript':'https://www.typescriptlang.org/','python':'https://www.python.org/','go':'https://go.dev/','react':'https://react.dev/','nextjs':'https://nextjs.org/','vuedotjs':'https://vuejs.org/','database':'https://www.postgresql.org/','archlinux':'https://archlinux.org/'}
     for i,(glyph,label) in enumerate(techs):
         text+=f'  <a href="{urls[glyph]}">{picture("tech-"+glyph,label,"24%")}</a>\n'

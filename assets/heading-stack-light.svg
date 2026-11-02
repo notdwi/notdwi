@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="64" viewBox="0 0 800 64" role="img" aria-labelledby="title"><title id="title">What I work with</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="64" viewBox="0 0 800 64" role="img" aria-labelledby="title"><title id="title">Technologies</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
 .reveal{animation:reveal 1.2s ease-out both}
 .pulse{animation:pulse 3.4s ease-in-out infinite}
 @keyframes reveal{from{opacity:0}to{opacity:1}}
 @keyframes pulse{50%{opacity:.3}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><text x="4" y="43" font-size="29" font-weight="600" fill="#352a39">What I work with</text><path d="M340 34h440" stroke="#e7dbe5"/></svg>
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><text x="4" y="43" font-size="29" font-weight="600" fill="#352a39">Technologies</text><path d="M340 34h440" stroke="#e7dbe5"/></svg>
