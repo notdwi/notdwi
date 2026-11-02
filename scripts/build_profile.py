@@ -116,14 +116,16 @@ My main languages are **TypeScript, Python and Go**. On the frontend, I work wit
 data modelling and integrations with **PostgreSQL and MySQL**. I enjoy connecting
 those parts into applications that are practical to use and straightforward to maintain.
 
-I'm currently building **Noctyra**, an anime platform for **web, Android and the
-terminal**. It brings together a Next.js frontend, Go services, a terminal client
-and an Android app. The work spans interfaces, APIs, content discovery and playback
-across different clients.
+I enjoy taking an idea through the whole development process: shaping the
+interface, implementing the business logic, connecting data and services, and
+refining how everything works together. My interests include **developer
+experience, API design, automation and tooling**. I like turning repetitive tasks
+into scripts, CLI tools and integrations that make development easier.
 
-Outside the application itself, I like **Linux, terminal workflows, automation and
-developer tooling**. Anime is part of my interests and often the starting point
-for the projects I build.
+I work in a **Linux-based environment** and enjoy terminal workflows, learning how
+systems fit together and experimenting with different ways to build software.
+Outside coding, I'm into anime, which also influences the visual identity of
+some of my projects.
 
 """
     text+=picture('heading-workflow','AI, MCP and agents')+'\n\n'
