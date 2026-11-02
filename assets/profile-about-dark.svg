@@ -1,6 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="104" viewBox="0 0 800 104" role="img" aria-labelledby="title"><title id="title">I build web applications, APIs and developer tools. Currently building Noctyra, from the interface to the database.</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220" role="img" aria-labelledby="title"><title id="title">I&#x27;m Gean, a full-stack developer based in Brazil. I develop web applications, REST APIs and developer tools, working across interfaces, backend services and databases. My main languages are TypeScript, Python and Go. Currently building Noctyra.</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
 .reveal{animation:reveal 1.2s ease-out both}
 .pulse{animation:pulse 3.4s ease-in-out infinite}
 @keyframes reveal{from{opacity:0}to{opacity:1}}
 @keyframes pulse{50%{opacity:.3}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><g class="reveal"><text x="4" y="33" font-size="25" fill="#f0e8ef">I build web applications, APIs and developer tools.</text><circle cx="10" cy="72" r="4" fill="#aecab5" class="pulse"/><text x="26" y="79" font-size="21" fill="#bcb0c1">Currently building Noctyra, from the interface to the database.</text></g></svg>
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><g class="reveal">
+<text x="4" y="36" font-size="27" fill="#f0e8ef">I'm Gean, a full-stack developer based in Brazil.</text>
+<text x="4" y="82" font-size="22" fill="#bcb0c1">I develop web applications, REST APIs and developer tools,</text>
+<text x="4" y="114" font-size="22" fill="#bcb0c1">working across interfaces, backend services and databases.</text>
+<text x="4" y="159" font-size="22" fill="#bcb0c1">My main languages are TypeScript, Python and Go.</text>
+<circle cx="10" cy="199" r="4" fill="#aecab5" class="pulse"/>
+<text x="26" y="206" font-size="22" fill="#f0e8ef">Currently building Noctyra.</text></g></svg>

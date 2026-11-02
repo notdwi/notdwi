@@ -8,7 +8,7 @@
   <a href="https://github.com/notdwi?tab=repositories"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/contact-github-dark.svg"><img src="assets/contact-github-light.svg" width="31%" alt="Explore my repositories"></picture></a>
 </p>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-about-dark.svg"><img src="assets/profile-about-light.svg" width="100%" alt="I build web applications, APIs and developer tools. Currently building Noctyra, from the interface to the database."></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-about-dark.svg"><img src="assets/profile-about-light.svg" width="100%" alt="I&#x27;m Gean, a full-stack developer based in Brazil. I develop web applications, REST APIs and developer tools, working across interfaces, backend services and databases. My main languages are TypeScript, Python and Go. Currently building Noctyra."></picture>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/heading-stack-dark.svg"><img src="assets/heading-stack-light.svg" width="100%" alt="Technologies"></picture>
 

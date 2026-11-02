@@ -10,7 +10,11 @@ STYLE = '''text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
 @keyframes reveal{from{opacity:0}to{opacity:1}}
 @keyframes pulse{50%{opacity:.3}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}'''
-def svg(name, width, height, content, title):
+def svg(name, width, height, content, title, padding=0):
+    if padding:
+        content = f'<g transform="translate({padding} {padding})">{content}</g>'
+        width += 2 * padding
+        height += 2 * padding
     (ASSETS / name).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title"><title id="title">{escape(title)}</title><style>{STYLE}</style>{content}</svg>')
 def build():
     picture = base64.b64encode((ASSETS / 'saiki-scene.png').read_bytes()).decode()
@@ -23,7 +27,7 @@ def build():
 <g class="reveal"><text x="48" y="103" font-size="17" fill="#c9bccb">やれやれ。</text>
 <text x="46" y="170" fill="#f4edf3" font-size="60" font-weight="700" letter-spacing="-3">hey, i'm gean.</text>
 <text x="49" y="208" fill="#e7a2bf" font-size="20">Full-stack Software Developer</text>
-<text x="49" y="249" fill="#c9bccb" font-size="16">Thoughtful interfaces. Reliable systems.</text>
+<text x="49" y="249" fill="#c9bccb" font-size="16">Web applications, APIs &amp; developer tools.</text>
 <circle class="pulse" cx="53" cy="292" r="3" fill="#a8c6ae"/>
 <text x="65" y="297" fill="#c9bccb" font-size="13">Brazil / @notdwi</text></g></g>''','Gean / notdwi — Full-stack Software Developer. Saiki Kusuo with pink hair, green glasses and coffee jelly.')
     for theme, ink, muted, line, accent in [('dark','#e8dee8','#b7aaba','#39303e','#e7a2bf'),('light','#352b3a','#706376','#e9dfe9','#9d426a')]:
@@ -63,7 +67,14 @@ def build_components():
             content += '<g class="reveal">'+icon(glyph,22,24,28,pink)
             content += f'<text x="67" y="46" font-size="23" fill="{ink}">{label}</text><path d="m223 43 10-10m-10 0h10v10" fill="none" stroke="{sage}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>'
             svg(f'contact-{slug}-{theme}.svg',260,76,content,label)
-        svg(f'profile-about-{theme}.svg',800,104,f'<g class="reveal"><text x="4" y="33" font-size="25" fill="{ink}">I build web applications, APIs and developer tools.</text><circle cx="10" cy="72" r="4" fill="{sage}" class="pulse"/><text x="26" y="79" font-size="21" fill="{muted}">Currently building Noctyra, from the interface to the database.</text></g>','I build web applications, APIs and developer tools. Currently building Noctyra, from the interface to the database.')
+        about = "I'm Gean, a full-stack developer based in Brazil. I develop web applications, REST APIs and developer tools, working across interfaces, backend services and databases. My main languages are TypeScript, Python and Go. Currently building Noctyra."
+        svg(f'profile-about-{theme}.svg',800,220,f'''<g class="reveal">
+<text x="4" y="36" font-size="27" fill="{ink}">I'm Gean, a full-stack developer based in Brazil.</text>
+<text x="4" y="82" font-size="22" fill="{muted}">I develop web applications, REST APIs and developer tools,</text>
+<text x="4" y="114" font-size="22" fill="{muted}">working across interfaces, backend services and databases.</text>
+<text x="4" y="159" font-size="22" fill="{muted}">My main languages are TypeScript, Python and Go.</text>
+<circle cx="10" cy="199" r="4" fill="{sage}" class="pulse"/>
+<text x="26" y="206" font-size="22" fill="{ink}">Currently building Noctyra.</text></g>''',about)
         for slug, title in [('stack','Technologies'),('projects','Selected projects')]:
             svg(f'heading-{slug}-{theme}.svg',800,64,f'<text x="4" y="43" font-size="29" font-weight="600" fill="{ink}">{title}</text><path d="M{340 if slug=="stack" else 320} 34h{440 if slug=="stack" else 460}" stroke="{line}"/>',title)
         techs = [('typescript','TypeScript'),('python','Python'),('go','Go'),('react','React'),('nextjs','Next.js'),('vuedotjs','Vue'),('database','PostgreSQL'),('archlinux','Linux')]
@@ -71,7 +82,7 @@ def build_components():
             content=f'<rect x="1" y="1" width="198" height="74" rx="12" fill="{bg}" stroke="{line}"/>'
             content+='<g class="reveal">'+icon(glyph,17,24,28,pink if n%2==0 else sage)
             content+=f'<text x="57" y="46" font-size="21" fill="{ink}">{label}</text></g>'
-            svg(f'tech-{glyph}-{theme}.svg',200,76,content,label)
+            svg(f'tech-{glyph}-{theme}.svg',200,76,content,label,padding=10)
         projects=[
             ('veil','veil','code','A privacy-focused API client.','Local testing with Rust and Tauri.','Rust / Tauri / React'),
             ('hypronline','HyprOnline','terminal','Anime search in your terminal.','Scraping and direct video streaming.','Python / CLI / Streaming'),
@@ -86,13 +97,13 @@ def build_components():
             content+=f'<path d="m377 40 12-12m-12 0h12v12" fill="none" stroke="{muted}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'
             content+=f'<text x="24" y="91" font-size="21" fill="{ink}">{escape(desc)}</text><text x="24" y="121" font-size="19" fill="{muted}">{escape(detail)}</text>'
             content+=f'<path d="M24 148h372" stroke="{line}"/><circle cx="29" cy="177" r="3.5" fill="{accent}"/><text x="42" y="183" font-size="17" fill="{muted}">{escape(stack)}</text></g>'
-            svg(f'card-{slug}-{theme}.svg',420,205,content,f'{title}: {desc} {detail} {stack}')
+            svg(f'card-{slug}-{theme}.svg',420,205,content,f'{title}: {desc} {detail} {stack}',padding=14)
     def picture(stem,alt,width='100%'):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="assets/{stem}-dark.svg"><img src="assets/{stem}-light.svg" width="{width}" alt="{escape(alt,quote=True)}"></picture>'
     text='<p align="center">\n  <img src="assets/saiki-cover.svg" width="100%" alt="Hey, I’m Gean — Full-stack Software Developer. Saiki Kusuo enjoying coffee jelly.">\n</p>\n\n<p align="center">\n'
     for slug, link, title in [('portfolio','https://dwi.best','Visit my portfolio'),('email','mailto:dwi@haunt.gg','Email dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Explore my repositories')]:
         text+=f'  <a href="{link}">{picture("contact-"+slug,title,"31%")}</a>\n'
-    text+='</p>\n\n'+picture('profile-about','I build web applications, APIs and developer tools. Currently building Noctyra, from the interface to the database.')+'\n\n'
+    text+='</p>\n\n'+picture('profile-about',about)+'\n\n'
     text+=picture('heading-stack','Technologies')+'\n\n<p align="center">\n'
     urls={'typescript':'https://www.typescriptlang.org/','python':'https://www.python.org/','go':'https://go.dev/','react':'https://react.dev/','nextjs':'https://nextjs.org/','vuedotjs':'https://vuejs.org/','database':'https://www.postgresql.org/','archlinux':'https://archlinux.org/'}
     for i,(glyph,label) in enumerate(techs):
