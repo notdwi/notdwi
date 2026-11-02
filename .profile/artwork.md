@@ -2,7 +2,7 @@
 
 Generated with the built-in imagegen tool. This is original generated fan artwork, not an official anime still.
 
-Source: `assets/saiki-scene.png`. Self-contained animated SVG: `assets/saiki-cover.svg`.
+Source: `assets/saiki-scene.png`. Self-contained animated SVG: `assets/profile-v5/saiki-cover.svg`.
 
 Rebuild with `python scripts/build_profile.py`; validate with `python scripts/validate_profile.py`.
 

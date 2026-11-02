@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="76" viewBox="0 0 260 76" role="img" aria-labelledby="title"><title id="title">Coding agents</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+.reveal{animation:reveal 1.2s ease-out both}
+.pulse{animation:pulse 3.4s ease-in-out infinite}
+@keyframes reveal{from{opacity:0}to{opacity:1}}
+@keyframes pulse{50%{opacity:.3}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><rect x="1" y="1" width="258" height="74" rx="13" fill="#fbf7fa" stroke="#e7dbe5"/><g class="reveal"><g transform="translate(18 24) scale(1.125)" fill="none" stroke="#a4406e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m6 9 4 3-4 3m7 0h5"/></g><text x="59" y="45" font-size="19" fill="#352a39">Coding agents</text></g></svg>

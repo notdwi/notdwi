@@ -1,40 +1,98 @@
 <p align="center">
-  <img src="assets/saiki-cover.svg" width="100%" alt="Hey, I’m Gean — Full-stack Software Developer. Saiki Kusuo enjoying coffee jelly.">
+  <img src="assets/profile-v5/saiki-cover.svg" width="100%" alt="Hey, I’m Gean — Full-stack Software Developer. Saiki Kusuo enjoying coffee jelly.">
 </p>
 
 <p align="center">
-  <a href="https://dwi.best"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/contact-portfolio-dark.svg"><img src="assets/contact-portfolio-light.svg" width="31%" alt="Visit my portfolio"></picture></a>
-  <a href="mailto:dwi@haunt.gg"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/contact-email-dark.svg"><img src="assets/contact-email-light.svg" width="31%" alt="Email dwi@haunt.gg"></picture></a>
-  <a href="https://github.com/notdwi?tab=repositories"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/contact-github-dark.svg"><img src="assets/contact-github-light.svg" width="31%" alt="Explore my repositories"></picture></a>
+<a href="https://dwi.best"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/contact-portfolio-dark.svg"><img src="assets/profile-v5/contact-portfolio-light.svg" width="31%" alt="Visit my portfolio"></picture></a>
+  <img src="assets/profile-v5/spacer.svg" width="1%" alt="">
+  <a href="mailto:dwi@haunt.gg"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/contact-email-dark.svg"><img src="assets/profile-v5/contact-email-light.svg" width="31%" alt="Email dwi@haunt.gg"></picture></a>
+  <img src="assets/profile-v5/spacer.svg" width="1%" alt="">
+  <a href="https://github.com/notdwi?tab=repositories"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/contact-github-dark.svg"><img src="assets/profile-v5/contact-github-light.svg" width="31%" alt="Explore my repositories"></picture></a>
 </p>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-about-dark.svg"><img src="assets/profile-about-light.svg" width="100%" alt="I&#x27;m Gean, a full-stack developer based in Brazil. I develop web applications, REST APIs and developer tools, working across interfaces, backend services and databases. My main languages are TypeScript, Python and Go. Currently building Noctyra."></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/heading-about-dark.svg"><img src="assets/profile-v5/heading-about-light.svg" width="100%" alt="About me"></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/heading-stack-dark.svg"><img src="assets/heading-stack-light.svg" width="100%" alt="Technologies"></picture>
+I'm **Gean**, also known as **Dwi**, a **full-stack software developer based in Brazil**.
+I build web applications, REST APIs, command-line tools and integrations, working
+across the frontend, backend and database.
+
+My main languages are **TypeScript, Python and Go**. On the frontend, I work with
+**React, Next.js and Vue**; on the backend, I work on API design, authentication,
+data modelling and integrations with **PostgreSQL and MySQL**. I enjoy connecting
+those parts into applications that are practical to use and straightforward to maintain.
+
+I'm currently building **Noctyra**, an anime platform for **web, Android and the
+terminal**. It brings together a Next.js frontend, Go services, a terminal client
+and an Android app. The work spans interfaces, APIs, content discovery and playback
+across different clients.
+
+Outside the application itself, I like **Linux, terminal workflows, automation and
+developer tooling**. Anime is part of my interests and often the starting point
+for the projects I build.
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/heading-workflow-dark.svg"><img src="assets/profile-v5/heading-workflow-light.svg" width="100%" alt="AI, MCP and agents"></picture>
+
+I use **AI-assisted development and coding agents** to explore codebases,
+prototype ideas, implement features, refactor code and work through debugging.
+I combine that assistance with reviewing changes, running checks and testing how
+the pieces behave together.
+
+I also work with **MCP (Model Context Protocol)** to connect AI assistants and
+agents to tools, APIs and project context. I'm interested in agent workflows that
+break larger tasks into smaller steps, automate repetitive work and make it easier
+to move between an idea, an implementation and a working result.
 
 <p align="center">
-  <a href="https://www.typescriptlang.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/tech-typescript-dark.svg"><img src="assets/tech-typescript-light.svg" width="24%" alt="TypeScript"></picture></a>
-  <a href="https://www.python.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/tech-python-dark.svg"><img src="assets/tech-python-light.svg" width="24%" alt="Python"></picture></a>
-  <a href="https://go.dev/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/tech-go-dark.svg"><img src="assets/tech-go-light.svg" width="24%" alt="Go"></picture></a>
-  <a href="https://react.dev/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/tech-react-dark.svg"><img src="assets/tech-react-light.svg" width="24%" alt="React"></picture></a>
-  <br>
-  <a href="https://nextjs.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/tech-nextjs-dark.svg"><img src="assets/tech-nextjs-light.svg" width="24%" alt="Next.js"></picture></a>
-  <a href="https://vuejs.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/tech-vuedotjs-dark.svg"><img src="assets/tech-vuedotjs-light.svg" width="24%" alt="Vue"></picture></a>
-  <a href="https://www.postgresql.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/tech-database-dark.svg"><img src="assets/tech-database-light.svg" width="24%" alt="PostgreSQL"></picture></a>
-  <a href="https://archlinux.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/tech-archlinux-dark.svg"><img src="assets/tech-archlinux-light.svg" width="24%" alt="Linux"></picture></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/workflow-ai-dark.svg"><img src="assets/profile-v5/workflow-ai-light.svg" width="31%" alt="AI-assisted development"></picture>
+  <img src="assets/profile-v5/spacer.svg" width="1%" alt="">
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/workflow-mcp-dark.svg"><img src="assets/profile-v5/workflow-mcp-light.svg" width="31%" alt="MCP integrations"></picture>
+  <img src="assets/profile-v5/spacer.svg" width="1%" alt="">
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/workflow-agents-dark.svg"><img src="assets/profile-v5/workflow-agents-light.svg" width="31%" alt="Coding agents"></picture>
 </p>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/heading-projects-dark.svg"><img src="assets/heading-projects-light.svg" width="100%" alt="Selected projects"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/heading-stack-dark.svg"><img src="assets/profile-v5/heading-stack-light.svg" width="100%" alt="Technologies"></picture>
 
 <p align="center">
-  <a href="https://github.com/notdwi/veil"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-veil-dark.svg"><img src="assets/card-veil-light.svg" width="49%" alt="veil — project description and technologies"></picture></a>
-  <a href="https://github.com/notdwi/HyprOnline"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-hypronline-dark.svg"><img src="assets/card-hypronline-light.svg" width="49%" alt="HyprOnline — project description and technologies"></picture></a>
+<a href="https://www.typescriptlang.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/tech-typescript-dark.svg"><img src="assets/profile-v5/tech-typescript-light.svg" width="23%" alt="TypeScript"></picture></a>
+  <img src="assets/profile-v5/spacer.svg" width="2%" alt="">
+  <a href="https://www.python.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/tech-python-dark.svg"><img src="assets/profile-v5/tech-python-light.svg" width="23%" alt="Python"></picture></a>
+  <img src="assets/profile-v5/spacer.svg" width="2%" alt="">
+  <a href="https://go.dev/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/tech-go-dark.svg"><img src="assets/profile-v5/tech-go-light.svg" width="23%" alt="Go"></picture></a>
+  <img src="assets/profile-v5/spacer.svg" width="2%" alt="">
+  <a href="https://react.dev/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/tech-react-dark.svg"><img src="assets/profile-v5/tech-react-light.svg" width="23%" alt="React"></picture></a>
 </p>
+
+<p><img src="assets/profile-v5/row-space.svg" width="100%" alt=""></p>
 
 <p align="center">
-  <a href="https://github.com/notdwi/KoeWeeb"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-koeweeb-dark.svg"><img src="assets/card-koeweeb-light.svg" width="49%" alt="KoeWeeb — project description and technologies"></picture></a>
-  <a href="https://github.com/notdwi/PokeCenter"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-pokecenter-dark.svg"><img src="assets/card-pokecenter-light.svg" width="49%" alt="PokeCenter — project description and technologies"></picture></a>
+<a href="https://nextjs.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/tech-nextjs-dark.svg"><img src="assets/profile-v5/tech-nextjs-light.svg" width="23%" alt="Next.js"></picture></a>
+  <img src="assets/profile-v5/spacer.svg" width="2%" alt="">
+  <a href="https://vuejs.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/tech-vuedotjs-dark.svg"><img src="assets/profile-v5/tech-vuedotjs-light.svg" width="23%" alt="Vue"></picture></a>
+  <img src="assets/profile-v5/spacer.svg" width="2%" alt="">
+  <a href="https://www.postgresql.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/tech-database-dark.svg"><img src="assets/profile-v5/tech-database-light.svg" width="23%" alt="PostgreSQL"></picture></a>
+  <img src="assets/profile-v5/spacer.svg" width="2%" alt="">
+  <a href="https://archlinux.org/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/tech-archlinux-dark.svg"><img src="assets/profile-v5/tech-archlinux-light.svg" width="23%" alt="Linux"></picture></a>
 </p>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/wave-dark.svg"><img src="assets/wave-light.svg" width="100%" alt="Animated pink wave"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/saiki-note-dark.svg"><img src="assets/saiki-note-light.svg" width="100%" alt="Code, coffee jelly, repeat."></picture>
+<p><img src="assets/profile-v5/row-space.svg" width="100%" alt=""></p>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/heading-projects-dark.svg"><img src="assets/profile-v5/heading-projects-light.svg" width="100%" alt="Selected projects"></picture>
+
+<p align="center">
+<a href="https://github.com/notdwi/veil"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/card-veil-dark.svg"><img src="assets/profile-v5/card-veil-light.svg" width="47%" alt="veil — project description and technologies"></picture></a>
+  <img src="assets/profile-v5/spacer.svg" width="4%" alt="">
+  <a href="https://github.com/notdwi/HyprOnline"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/card-hypronline-dark.svg"><img src="assets/profile-v5/card-hypronline-light.svg" width="47%" alt="HyprOnline — project description and technologies"></picture></a>
+</p>
+
+<p><img src="assets/profile-v5/row-space.svg" width="100%" alt=""></p>
+
+<p align="center">
+<a href="https://github.com/notdwi/KoeWeeb"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/card-koeweeb-dark.svg"><img src="assets/profile-v5/card-koeweeb-light.svg" width="47%" alt="KoeWeeb — project description and technologies"></picture></a>
+  <img src="assets/profile-v5/spacer.svg" width="4%" alt="">
+  <a href="https://github.com/notdwi/PokeCenter"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/card-pokecenter-dark.svg"><img src="assets/profile-v5/card-pokecenter-light.svg" width="47%" alt="PokeCenter — project description and technologies"></picture></a>
+</p>
+
+<p><img src="assets/profile-v5/row-space.svg" width="100%" alt=""></p>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/wave-dark.svg"><img src="assets/profile-v5/wave-light.svg" width="100%" alt="Animated pink wave"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/saiki-note-dark.svg"><img src="assets/profile-v5/saiki-note-light.svg" width="100%" alt="Code, coffee jelly, repeat."></picture>
