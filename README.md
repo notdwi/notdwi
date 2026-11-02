@@ -1,48 +1,41 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/saiki-dark.svg">
-  <img src="assets/saiki-light.svg" width="100%" alt="Gean / notdwi — Full-stack developer based in Brazil. Saiki Kusuo inspired artwork with pink hair and green glasses.">
-</picture>
-
 <p align="center">
-  <a href="https://dwi.best">Portfolio</a> &nbsp; / &nbsp;
-  <a href="mailto:dwi@haunt.gg">Email</a> &nbsp; / &nbsp;
-  <a href="https://github.com/notdwi?tab=repositories">Repositories</a>
+  <img src="assets/saiki-cover.svg" width="100%" alt="Hey, I'm Gean — full-stack developer. Saiki Kusuo enjoying coffee jelly.">
 </p>
 
-### A bit about me
+<p align="center">
+  <a href="https://dwi.best">portfolio</a> &nbsp; · &nbsp;
+  <a href="mailto:dwi@haunt.gg">email</a> &nbsp; · &nbsp;
+  <a href="https://github.com/notdwi?tab=repositories">repositories</a>
+</p>
 
-I'm Gean, aka **Dwi**, a full-stack developer from Brazil. I build web apps,
-REST APIs and developer tools, from the database to the interface.
-Currently working on **Noctyra**.
+<br>
 
-I like clean APIs, Linux, anime and software that feels good to use.
+Full-stack developer from Brazil, currently building **Noctyra**.<br>
+Web apps, APIs and developer tools. Linux, anime and attention to detail.
 
-### Stack
+<br>
 
-| | Technologies |
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/saiki-stack-dark.svg">
+  <img src="assets/saiki-stack-light.svg" width="100%" alt="TypeScript, Python, Go, React, Next.js, PostgreSQL and Linux">
+</picture>
+
+<br>
+
+### A few things I've built
+
+| | |
 | :--- | :--- |
-| Languages | TypeScript, Python, Go |
-| Frontend | React, Next.js, Vue |
-| Backend & data | Flask, REST APIs, PostgreSQL, MySQL |
-| Tools | Linux, Git, GitHub Actions |
+| **[veil](https://github.com/notdwi/veil)**<br>A privacy-focused, local API client.<br><sub>Rust / Tauri / React</sub> | **[HyprOnline](https://github.com/notdwi/HyprOnline)**<br>Anime, straight from the terminal.<br><sub>Python / CLI</sub> |
+| **[KoeWeeb](https://github.com/notdwi/KoeWeeb)**<br>A focused manga reading experience.<br><sub>Web / Scraping</sub> | **[PokeCenter](https://github.com/notdwi/PokeCenter)**<br>A full-stack Pokémon management app.<br><sub>Next.js / NestJS / PostgreSQL</sub> |
 
-### Selected projects
-
-**[veil](https://github.com/notdwi/veil)**<br>
-A local API client built with Rust, Tauri and React. Inspired by Persona 5.
-
-**[HyprOnline](https://github.com/notdwi/HyprOnline)**<br>
-An anime assistant for the terminal, with search and direct streaming.
-
-**[KoeWeeb](https://github.com/notdwi/KoeWeeb)**<br>
-A manga reader with smart scraping and a focused reading experience.
-
-**[PokeCenter](https://github.com/notdwi/PokeCenter)**<br>
-Pokémon management with Next.js, NestJS, PostgreSQL and JWT authentication.
+<br>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/wave-dark.svg">
-  <img src="assets/wave-light.svg" width="100%" alt="Animated pink wave">
+  <img src="assets/wave-light.svg" width="100%" alt="Soft animated pink wave">
 </picture>
-
-<p align="center"><sub>Code, coffee jelly, repeat.</sub></p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/saiki-note-dark.svg">
+  <img src="assets/saiki-note-light.svg" width="100%" alt="Code, coffee jelly, repeat.">
+</picture>
