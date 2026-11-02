@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="208" height="84" viewBox="0 0 208 84" role="img" aria-labelledby="title"><title id="title">Vue</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+.reveal{animation:reveal 1.2s ease-out both}
+.pulse{animation:pulse 3.4s ease-in-out infinite}
+@keyframes reveal{from{opacity:0}to{opacity:1}}
+@keyframes pulse{50%{opacity:.3}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><g transform="translate(4 4)"><rect x="1" y="1" width="198" height="74" rx="12" fill="#fbf7fa" stroke="#e7dbe5"/><g class="reveal"><g transform="translate(17 24) scale(1.1666666666666667)"><path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z" fill="#487357"/></g><text x="57" y="46" font-size="21" fill="#352a39">Vue</text></g></g></svg>

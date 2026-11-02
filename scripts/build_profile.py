@@ -63,19 +63,26 @@ def build_components():
             content += '<g class="reveal">'+icon(glyph,22,24,28,pink)
             content += f'<text x="67" y="46" font-size="23" fill="{ink}">{label}</text><path d="m223 43 10-10m-10 0h10v10" fill="none" stroke="{sage}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>'
             svg(f'contact-{slug}-{theme}.svg',260,76,content,label)
-        for slug, title in [('about','About me'),('workflow','AI, MCP & agents'),('stack','Technologies'),('projects','Selected projects')]:
+        for slug, title in [('stack','Technologies'),('projects','Selected projects')]:
             svg(f'heading-{slug}-{theme}.svg',800,64,f'<text x="4" y="43" font-size="29" font-weight="600" fill="{ink}">{escape(title)}</text><path d="M{340 if slug=="stack" else 320} 34h{440 if slug=="stack" else 460}" stroke="{line}"/>',title)
-        for slug, label, glyph in [('ai','AI development','code'),('mcp','MCP integrations','globe'),('agents','Coding agents','terminal')]:
-            content=f'<rect x="1" y="1" width="258" height="74" rx="13" fill="{bg}" stroke="{line}"/>'
-            content+='<g class="reveal">'+icon(glyph,18,24,27,pink)
-            content+=f'<text x="59" y="45" font-size="19" fill="{ink}">{label}</text></g>'
-            svg(f'workflow-{slug}-{theme}.svg',260,76,content,label)
+        summary = [
+            'Full-stack developer based in Brazil.',
+            'Web apps, REST APIs & developer tools.',
+            'TypeScript, Python & Go.',
+            'AI-assisted development, MCP & coding agents.',
+            'Linux, automation & anime.',
+        ]
+        content='<g class="reveal">'
+        for i, label in enumerate(summary):
+            y=30+i*35
+            content+=f'<circle cx="10" cy="{y-7}" r="3.5" fill="{pink if i%2==0 else sage}"/><text x="27" y="{y}" font-size="23" fill="{ink if i==0 else muted}">{escape(label)}</text>'
+        svg(f'profile-summary-{theme}.svg',800,188,content+'</g>',' '.join(summary))
         techs = [('typescript','TypeScript'),('python','Python'),('go','Go'),('react','React'),('nextjs','Next.js'),('vuedotjs','Vue'),('database','PostgreSQL'),('archlinux','Linux')]
         for n,(glyph,label) in enumerate(techs):
             content=f'<rect x="1" y="1" width="198" height="74" rx="12" fill="{bg}" stroke="{line}"/>'
             content+='<g class="reveal">'+icon(glyph,17,24,28,pink if n%2==0 else sage)
             content+=f'<text x="57" y="46" font-size="21" fill="{ink}">{label}</text></g>'
-            svg(f'tech-{glyph}-{theme}.svg',200,76,content,label,padding=10)
+            svg(f'compact-tech-{glyph}-{theme}.svg',200,76,content,label,padding=4)
         projects=[
             ('veil','veil','code','A privacy-focused API client.','Local testing with Rust and Tauri.','Rust / Tauri / React'),
             ('hypronline','HyprOnline','terminal','Anime search in your terminal.','Scraping and direct video streaming.','Python / CLI / Streaming'),
@@ -90,68 +97,29 @@ def build_components():
             content+=f'<path d="m377 40 12-12m-12 0h12v12" fill="none" stroke="{muted}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'
             content+=f'<text x="24" y="91" font-size="21" fill="{ink}">{escape(desc)}</text><text x="24" y="121" font-size="19" fill="{muted}">{escape(detail)}</text>'
             content+=f'<path d="M24 148h372" stroke="{line}"/><circle cx="29" cy="177" r="3.5" fill="{accent}"/><text x="42" y="183" font-size="17" fill="{muted}">{escape(stack)}</text></g>'
-            svg(f'card-{slug}-{theme}.svg',420,205,content,f'{title}: {desc} {detail} {stack}',padding=14)
+            svg(f'compact-card-{slug}-{theme}.svg',420,205,content,f'{title}: {desc} {detail} {stack}',padding=6)
     from shutil import copyfile
     for theme in ('dark', 'light'):
         copyfile(ASSETS / f'wave-{theme}.svg', OUTPUT / f'wave-{theme}.svg')
-    svg('spacer.svg',100,1,'','')
-    svg('row-space.svg',840,20,'','')
     def picture(stem,alt,width='100%'):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="{ASSET_URL}/{stem}-dark.svg"><img src="{ASSET_URL}/{stem}-light.svg" width="{width}" alt="{escape(alt,quote=True)}"></picture>'
-    def gap(width='2%'):
-        return f'<img src="{ASSET_URL}/spacer.svg" width="{width}" alt="">'
-    row_space=f'<p><img src="{ASSET_URL}/row-space.svg" width="100%" alt=""></p>\n\n'
     text=f'<p align="center">\n  <img src="{ASSET_URL}/saiki-cover.svg" width="100%" alt="Hey, I’m Gean — Full-stack Software Developer. Saiki Kusuo enjoying coffee jelly.">\n</p>\n\n<p align="center">\n'
     links=[]
     for slug, link, title in [('portfolio','https://dwi.best','Visit my portfolio'),('email','mailto:dwi@haunt.gg','Email dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Explore my repositories')]:
         links.append(f'<a href="{link}">{picture("contact-"+slug,title,"31%")}</a>')
-    text+=('\n  '+gap('1%')+'\n  ').join(links)+'\n</p>\n\n'
-    text+=picture('heading-about','About me')+'\n\n'
-    text+="""I'm **Gean**, also known as **Dwi**, a **full-stack software developer based in Brazil**.
-I build web applications, REST APIs, command-line tools and integrations, working
-across the frontend, backend and database.
-
-My main languages are **TypeScript, Python and Go**. On the frontend, I work with
-**React, Next.js and Vue**; on the backend, I work on API design, authentication,
-data modelling and integrations with **PostgreSQL and MySQL**. I enjoy connecting
-those parts into applications that are practical to use and straightforward to maintain.
-
-I enjoy taking an idea through the whole development process: shaping the
-interface, implementing the business logic, connecting data and services, and
-refining how everything works together. My interests include **developer
-experience, API design, automation and tooling**. I like turning repetitive tasks
-into scripts, CLI tools and integrations that make development easier.
-
-I work in a **Linux-based environment** and enjoy terminal workflows, learning how
-systems fit together and experimenting with different ways to build software.
-Outside coding, I'm into anime, which also influences the visual identity of
-some of my projects.
-
-"""
-    text+=picture('heading-workflow','AI, MCP and agents')+'\n\n'
-    text+="""I use **AI-assisted development and coding agents** to explore codebases,
-prototype ideas, implement features, refactor code and work through debugging.
-I combine that assistance with reviewing changes, running checks and testing how
-the pieces behave together.
-
-I also work with **MCP (Model Context Protocol)** to connect AI assistants and
-agents to tools, APIs and project context. I'm interested in agent workflows that
-break larger tasks into smaller steps, automate repetitive work and make it easier
-to move between an idea, an implementation and a working result.
-
-"""
-    text+='<p align="center">\n'+('\n  '+gap('1%')+'\n  ').join(picture('workflow-'+slug,label,'31%') for slug,label in [('ai','AI-assisted development'),('mcp','MCP integrations'),('agents','Coding agents')])+'\n</p>\n\n'
+    text+='\n  '.join(links)+'\n</p>\n\n'
+    text+=picture('profile-summary','Full-stack developer based in Brazil. Web apps, REST APIs and developer tools. TypeScript, Python and Go. AI-assisted development, MCP and coding agents. Linux, automation and anime.')+'\n\n'
     text+=picture('heading-stack','Technologies')+'\n\n'
     urls={'typescript':'https://www.typescriptlang.org/','python':'https://www.python.org/','go':'https://go.dev/','react':'https://react.dev/','nextjs':'https://nextjs.org/','vuedotjs':'https://vuejs.org/','database':'https://www.postgresql.org/','archlinux':'https://archlinux.org/'}
     for row in [techs[:4],techs[4:]]:
         text+='<p align="center">\n'
-        text+=('\n  '+gap('2%')+'\n  ').join(f'<a href="{urls[glyph]}">{picture("tech-"+glyph,label,"23%")}</a>' for glyph,label in row)
-        text+='\n</p>\n\n'+row_space
+        text+='\n  '.join(f'<a href="{urls[glyph]}">{picture("compact-tech-"+glyph,label,"24%")}</a>' for glyph,label in row)
+        text+='\n</p>\n\n'
     text+=picture('heading-projects','Selected projects')+'\n\n'
     for row in [[('veil','veil'),('hypronline','HyprOnline')],[('koeweeb','KoeWeeb'),('pokecenter','PokeCenter')]]:
         text+='<p align="center">\n'
-        text+=('\n  '+gap('4%')+'\n  ').join(f'<a href="https://github.com/notdwi/{name}">{picture("card-"+slug,name+" — project description and technologies","47%")}</a>' for slug,name in row)
-        text+='\n</p>\n\n'+row_space
+        text+='\n  '.join(f'<a href="https://github.com/notdwi/{name}">{picture("compact-card-"+slug,name+" — project description and technologies","49%")}</a>' for slug,name in row)
+        text+='\n</p>\n\n'
     text+=picture('wave','Animated pink wave')+'\n'+picture('saiki-note','Code, coffee jelly, repeat.')+'\n'
     (ROOT/'README.md').write_text(text)
 
