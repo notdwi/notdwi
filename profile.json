@@ -1,9 +1,9 @@
 {
   "version": 1,
   "login": "notdwi",
-  "seed": "#05080F",
+  "seed": "#6c5ce7",
   "seedFromAvatar": true,
-  "scheme": "tonalSpot",
+  "scheme": "dark",
   "motion": true,
   "iconFill": true,
   "order": [
@@ -44,7 +44,7 @@
     "items": [
       {
         "icon": "person",
-        "label": " Full-stack developer building web apps, REST APIs and large-scale crawlers"
+        "label": " Full-stack developer building web apps, REST APIs and data pipelines"
       },
       {
         "icon": "code",
