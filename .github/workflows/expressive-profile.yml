@@ -1,52 +1,25 @@
-name: Expressive Profile
+name: Validate profile
 
 on:
-  schedule:
-    - cron: "17 * * * *"
-  workflow_dispatch:
   push:
     paths:
-      - profile.json
-      - .profile/icons.json
+      - README.md
+      - assets/**
+      - scripts/**
       - .github/workflows/expressive-profile.yml
+  pull_request:
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  update:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: metawka/expressive-profile@v1
+      - uses: actions/setup-python@v5
         with:
-          token: ${{ secrets.PROFILE_TOKEN || github.token }}
-
-      - name: Remove Expressive Profile credit
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          path = Path("README.md")
-          text = path.read_text(encoding="utf-8")
-          marker = '<a href="https://metawka.github.io/expressive-profile/?from=notdwi">'
-          start = text.find(marker)
-          if start != -1:
-              end = text.find('</a>', start)
-              if end != -1:
-                  text = text[:start] + text[end+4:]
-          from shutil import copyfile
-          for theme in ("dark", "light"):
-              copyfile(f"assets/social-2-{theme}.svg", f"assets/social-portfolio-{theme}.svg")
-              text = text.replace(f"assets/social-2-{theme}.svg?v=3", f"assets/social-portfolio-{theme}.svg")
-              text = text.replace(f"assets/social-2-{theme}.svg", f"assets/social-portfolio-{theme}.svg")
-          path.write_text(text, encoding="utf-8")
-          PY
-
-      - name: Commit cleanup
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md assets/social-portfolio-dark.svg assets/social-portfolio-light.svg
-          git diff --cached --quiet || git commit -m "Remove Expressive Profile credit"
-          git push
+          python-version: '3.x'
+      - name: Check artwork and local image references
+        run: python scripts/validate_profile.py

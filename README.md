@@ -1,19 +1,48 @@
-<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/saiki-dark.svg">
+  <img src="assets/saiki-light.svg" width="100%" alt="Gean / notdwi — Full-stack developer based in Brazil. Saiki Kusuo inspired artwork with pink hair and green glasses.">
+</picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><img src="assets/hero-light.svg" width="100%" alt="Hi, I&#x27;m Gean"></picture>
+<p align="center">
+  <a href="https://dwi.best">Portfolio</a> &nbsp; / &nbsp;
+  <a href="mailto:dwi@haunt.gg">Email</a> &nbsp; / &nbsp;
+  <a href="https://github.com/notdwi?tab=repositories">Repositories</a>
+</p>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-l-dark.svg"><img src="assets/social-l-light.svg" width="33.275%" alt=""></picture><a href="https://github.com/notdwi"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-1-dark.svg"><img src="assets/social-1-light.svg" width="16.014%" alt="github"></picture></a><a href="https://dwi.best"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-portfolio-dark.svg"><img src="assets/social-portfolio-light.svg" width="17.435%" alt="portfolio"></picture></a><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-r-dark.svg"><img src="assets/social-r-light.svg" width="33.275%" alt=""></picture>
+### A bit about me
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/about-dark.svg"><img src="assets/about-light.svg" width="100%" alt="About me"></picture>
+I'm Gean, aka **Dwi**, a full-stack developer from Brazil. I build web apps,
+REST APIs and developer tools, from the database to the interface.
+Currently working on **Noctyra**.
 
-<a href="https://github.com/notdwi/veil"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-veil-dark.svg"><img src="assets/project-veil-light.svg" width="49%" alt="veil"></picture></a>&nbsp;<a href="https://github.com/notdwi/KoeWeeb"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-koeweeb-dark.svg"><img src="assets/project-koeweeb-light.svg" width="49%" alt="KoeWeeb"></picture></a>
+I like clean APIs, Linux, anime and software that feels good to use.
 
-<a href="https://github.com/notdwi/PokeCenter"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-pokecenter-dark.svg"><img src="assets/project-pokecenter-light.svg" width="49%" alt="PokeCenter"></picture></a>&nbsp;<a href="https://github.com/notdwi/HyprOnline"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-hypronline-dark.svg"><img src="assets/project-hypronline-light.svg" width="49%" alt="HyprOnline"></picture></a>
+### Stack
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg"><img src="assets/stats-light.svg" width="100%" alt="GitHub activity"></picture>
+| | Technologies |
+| :--- | :--- |
+| Languages | TypeScript, Python, Go |
+| Frontend | React, Next.js, Vue |
+| Backend & data | Flask, REST APIs, PostgreSQL, MySQL |
+| Tools | Linux, Git, GitHub Actions |
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/wave-dark.svg"><img src="assets/wave-light.svg" width="100%" alt=""></picture>
+### Selected projects
 
+**[veil](https://github.com/notdwi/veil)**<br>
+A local API client built with Rust, Tauri and React. Inspired by Persona 5.
 
+**[HyprOnline](https://github.com/notdwi/HyprOnline)**<br>
+An anime assistant for the terminal, with search and direct streaming.
 
-</div>
+**[KoeWeeb](https://github.com/notdwi/KoeWeeb)**<br>
+A manga reader with smart scraping and a focused reading experience.
+
+**[PokeCenter](https://github.com/notdwi/PokeCenter)**<br>
+Pokémon management with Next.js, NestJS, PostgreSQL and JWT authentication.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/wave-dark.svg">
+  <img src="assets/wave-light.svg" width="100%" alt="Animated pink wave">
+</picture>
+
+<p align="center"><sub>Code, coffee jelly, repeat.</sub></p>
