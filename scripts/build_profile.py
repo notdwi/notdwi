@@ -9,8 +9,6 @@ OUTPUT = ROOT / ASSET_URL
 OUTPUT.mkdir(parents=True, exist_ok=True)
 STYLE = '''text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
 .reveal{animation:reveal 1.2s ease-out both}
-.chibi{animation:chibi 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-@keyframes chibi{50%{transform:translateY(-4px)}}
 .pulse{animation:pulse 3.4s ease-in-out infinite}
 @keyframes reveal{from{opacity:0}to{opacity:1}}
 @keyframes pulse{50%{opacity:.3}}
@@ -34,7 +32,7 @@ def build():
 <text x="22" y="181" fill="{pink}" font-size="24">Full-stack Software Developer</text>
 <text x="22" y="223" fill="{muted}" font-size="16">@notdwi / Brazil</text>
 </g>
-<g class="reveal"><image class="chibi" href="data:image/png;base64,{chibi}" x="705" y="5" width="280" height="245" preserveAspectRatio="xMidYMid meet"/></g>
+<g class="reveal"><image href="data:image/png;base64,{chibi}" x="705" y="5" width="280" height="245" preserveAspectRatio="xMidYMid meet"/></g>
 <path d="M20 261h960" stroke="{line}"/>
 ''','Gean / notdwi — Full-stack Software Developer. Minimal typography with a chibi Saiki Kusuo.')
         muted, line = ('#b7aaba', '#39303e') if theme == 'dark' else ('#706376', '#e9dfe9')
