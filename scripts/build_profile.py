@@ -23,29 +23,30 @@ def build():
         ('dark','#f0e8ef','#bcb0c1','#3b303f','#e8a2bf','#aecab5','#745044','#f0e1d4'),
         ('light','#352a39','#726377','#e7dbe5','#a4406e','#487357','#684338','#f1dfcf'),
     ]:
-        svg(f'header-coffee-{theme}.svg',1000,270,f'''
+        svg(f'header-saiki-emblem-{theme}.svg',1000,270,f'''
 <g class="reveal">
 <text x="20" y="42" fill="{muted}" font-size="17">やれやれ。</text>
 <text x="16" y="134" fill="{ink}" font-size="78" font-weight="700" letter-spacing="-4">hey, i'm gean.</text>
 <text x="22" y="181" fill="{pink}" font-size="24">Full-stack Software Developer</text>
 <text x="22" y="223" fill="{muted}" font-size="16">@notdwi / Brazil</text>
 </g>
-<!-- Hand-drawn coffee jelly: a small nod to Saiki, built entirely from paths. -->
-<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-<path d="m898 110 47-72" stroke="{sage}" stroke-width="5"/>
-<ellipse cx="947" cy="33" rx="10" ry="18" transform="rotate(31 947 33)" stroke="{sage}" stroke-width="3"/>
-<path d="M750 114q2 63 75 72 73-9 75-72" stroke="{sage}" stroke-width="3"/>
-<path d="M765 120q9 48 60 53 51-5 60-53Z" fill="{jelly}"/>
-<ellipse cx="825" cy="120" rx="60" ry="12" fill="{jelly}" stroke="{pink}" stroke-width="2"/>
-<path d="M782 114c-10-12 4-24 21-24-6-13 6-20 15-23-2-8 1-13 7-19 1 15 15 19 19 29 16 0 24 10 20 19 16 2 19 13 9 19-20 9-72 10-91-1Z" fill="{cream}"/>
-<path d="M803 91q21 9 42-3m-42 18q30 10 59-2" stroke="{jelly}" stroke-opacity=".24" stroke-width="2"/>
-<ellipse cx="825" cy="114" rx="75" ry="16" stroke="{sage}" stroke-width="3"/>
-<path d="M825 186v35m-32 10q32-14 64 0Z" stroke="{sage}" stroke-width="3"/>
-<path d="M777 137q4 11 13 16" stroke="{cream}" stroke-opacity=".55" stroke-width="3"/>
-<g class="pulse" stroke="{pink}" stroke-width="2"><path d="M731 65v14m-7-7h14m151 128v10m-5-5h10"/></g>
+<!-- Saiki's glasses and psychic limiters, reduced to a small vector emblem. -->
+<g class="reveal" stroke-linecap="round" stroke-linejoin="round">
+<g class="pulse" fill="none" stroke="{pink}" stroke-width="3">
+<path d="M757 79v23m156-23v23"/>
+<circle cx="757" cy="65" r="13" fill="{pink}" fill-opacity=".14"/>
+<circle cx="913" cy="65" r="13" fill="{pink}" fill-opacity=".14"/>
+</g>
+<g transform="rotate(-5 835 143)" stroke="{sage}" stroke-width="3">
+<path d="m741 121 76 4-5 49-64-4Z" fill="{sage}" fill-opacity=".12"/>
+<path d="m851 125 76-4-7 49-64 4Z" fill="{sage}" fill-opacity=".12"/>
+<path d="M818 136q16-9 33 0m-110-5-14-5m200 5 14-5" fill="none"/>
+<path d="m756 133 13 1m96 1 13-1" stroke-width="2" opacity=".6"/>
+</g>
+<path d="M810 205h48" stroke="{pink}" stroke-width="2" opacity=".45"/>
 </g>
 <path d="M20 261h960" stroke="{line}"/>
-''','Gean / notdwi — Full-stack Software Developer. Minimal typography with a coffee jelly illustration inspired by Saiki Kusuo.')
+''','Gean / notdwi — Full-stack Software Developer. Minimal typography with green glasses and pink psychic limiters inspired by Saiki Kusuo.')
         muted, line = ('#b7aaba', '#39303e') if theme == 'dark' else ('#706376', '#e9dfe9')
         svg(f'saiki-note-{theme}.svg',1000,54,f'<path d="M0 27h360m280 0h360" stroke="{line}"/><text x="500" y="33" text-anchor="middle" font-size="14" fill="{muted}">code, coffee jelly, repeat.</text>', 'Code, coffee jelly, repeat.')
 
@@ -116,7 +117,7 @@ def build_components():
         copyfile(ASSETS / f'wave-{theme}.svg', OUTPUT / f'wave-{theme}.svg')
     def picture(stem,alt,width='100%'):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="{ASSET_URL}/{stem}-dark.svg"><img src="{ASSET_URL}/{stem}-light.svg" width="{width}" alt="{escape(alt,quote=True)}"></picture>'
-    text='<p>'+picture('header-coffee','Hey, I’m Gean — Full-stack Software Developer. Hand-drawn coffee jelly inspired by Saiki Kusuo.')+'</p>\n\n<p align="center">\n'
+    text='<p>'+picture('header-saiki-emblem','Hey, I’m Gean — Full-stack Software Developer. Minimal green glasses and pink psychic limiters inspired by Saiki Kusuo.')+'</p>\n\n<p align="center">\n'
     links=[]
     for slug, link, title in [('portfolio','https://dwi.best','Visit my portfolio'),('email','mailto:dwi@haunt.gg','Email dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Explore my repositories')]:
         links.append(f'<a href="{link}">{picture("contact-"+slug,title,"31%")}</a>')
