@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="270" viewBox="0 0 1000 270" role="img" aria-labelledby="title"><title id="title">Gean / notdwi — Full-stack Software Developer. Minimal typography with a coffee jelly illustration inspired by Saiki Kusuo.</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+.reveal{animation:reveal 1.2s ease-out both}
+.pulse{animation:pulse 3.4s ease-in-out infinite}
+@keyframes reveal{from{opacity:0}to{opacity:1}}
+@keyframes pulse{50%{opacity:.3}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<g class="reveal">
+<text x="20" y="42" fill="#726377" font-size="17">やれやれ。</text>
+<text x="16" y="134" fill="#352a39" font-size="78" font-weight="700" letter-spacing="-4">hey, i'm gean.</text>
+<text x="22" y="181" fill="#a4406e" font-size="24">Full-stack Software Developer</text>
+<text x="22" y="223" fill="#726377" font-size="16">@notdwi / Brazil</text>
+</g>
+<!-- Hand-drawn coffee jelly: a small nod to Saiki, built entirely from paths. -->
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="m898 110 47-72" stroke="#487357" stroke-width="5"/>
+<ellipse cx="947" cy="33" rx="10" ry="18" transform="rotate(31 947 33)" stroke="#487357" stroke-width="3"/>
+<path d="M750 114q2 63 75 72 73-9 75-72" stroke="#487357" stroke-width="3"/>
+<path d="M765 120q9 48 60 53 51-5 60-53Z" fill="#684338"/>
+<ellipse cx="825" cy="120" rx="60" ry="12" fill="#684338" stroke="#a4406e" stroke-width="2"/>
+<path d="M782 114c-10-12 4-24 21-24-6-13 6-20 15-23-2-8 1-13 7-19 1 15 15 19 19 29 16 0 24 10 20 19 16 2 19 13 9 19-20 9-72 10-91-1Z" fill="#f1dfcf"/>
+<path d="M803 91q21 9 42-3m-42 18q30 10 59-2" stroke="#684338" stroke-opacity=".24" stroke-width="2"/>
+<ellipse cx="825" cy="114" rx="75" ry="16" stroke="#487357" stroke-width="3"/>
+<path d="M825 186v35m-32 10q32-14 64 0Z" stroke="#487357" stroke-width="3"/>
+<path d="M777 137q4 11 13 16" stroke="#f1dfcf" stroke-opacity=".55" stroke-width="3"/>
+<g class="pulse" stroke="#a4406e" stroke-width="2"><path d="M731 65v14m-7-7h14m151 128v10m-5-5h10"/></g>
+</g>
+<path d="M20 261h960" stroke="#e7dbe5"/>
+</svg>
