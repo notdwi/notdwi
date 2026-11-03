@@ -13,19 +13,22 @@ STYLE = '''text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
 @keyframes reveal{from{opacity:0}to{opacity:1}}
 @keyframes pulse{50%{opacity:.3}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}'''
-def svg(name, width, height, content, title, padding=0):
+def svg(name, width, height, content, title, padding=0, animated=True):
+    style = STYLE if animated else "text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}"
+    if not animated:
+        content = content.replace(' class="reveal"', '')
     if padding:
         content = f'<g transform="translate({padding} {padding})">{content}</g>'
         width += 2 * padding
         height += 2 * padding
-    (OUTPUT / name).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title"><title id="title">{escape(title)}</title><style>{STYLE}</style>{content}</svg>')
+    (OUTPUT / name).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title"><title id="title">{escape(title)}</title><style>{style}</style>{content}</svg>')
 def build():
     chibi = base64.b64encode((ASSETS / 'saiki-chibi.png').read_bytes()).decode()
     for theme, ink, muted, line, pink, sage, jelly, cream in [
         ('dark','#f0e8ef','#bcb0c1','#3b303f','#e8a2bf','#aecab5','#745044','#f0e1d4'),
         ('light','#352a39','#726377','#e7dbe5','#a4406e','#487357','#684338','#f1dfcf'),
     ]:
-        svg(f'header-saiki-chibi-{theme}.svg',1000,270,f'''
+        svg(f'header-saiki-chibi-static-{theme}.svg',1000,270,f'''
 <g class="reveal">
 <text x="20" y="42" fill="{muted}" font-size="17">やれやれ。</text>
 <text x="16" y="134" fill="{ink}" font-size="78" font-weight="700" letter-spacing="-4">hey, i'm gean.</text>
@@ -34,7 +37,7 @@ def build():
 </g>
 <g class="reveal"><image href="data:image/png;base64,{chibi}" x="705" y="5" width="280" height="245" preserveAspectRatio="xMidYMid meet"/></g>
 <path d="M20 261h960" stroke="{line}"/>
-''','Gean / notdwi — Full-stack Software Developer. Minimal typography with a chibi Saiki Kusuo.')
+''','Gean / notdwi — Full-stack Software Developer. Minimal typography with a chibi Saiki Kusuo.',animated=False)
         muted, line = ('#b7aaba', '#39303e') if theme == 'dark' else ('#706376', '#e9dfe9')
         svg(f'saiki-note-{theme}.svg',1000,54,f'<path d="M0 27h360m280 0h360" stroke="{line}"/><text x="500" y="33" text-anchor="middle" font-size="14" fill="{muted}">code, coffee jelly, repeat.</text>', 'Code, coffee jelly, repeat.')
 
@@ -105,7 +108,7 @@ def build_components():
         copyfile(ASSETS / f'wave-{theme}.svg', OUTPUT / f'wave-{theme}.svg')
     def picture(stem,alt,width='100%'):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="{ASSET_URL}/{stem}-dark.svg"><img src="{ASSET_URL}/{stem}-light.svg" width="{width}" alt="{escape(alt,quote=True)}"></picture>'
-    text='<p>'+picture('header-saiki-chibi','Hey, I’m Gean — Full-stack Software Developer. Chibi Saiki Kusuo with pink hair and green glasses.')+'</p>\n\n<p align="center">\n'
+    text='<p>'+picture('header-saiki-chibi-static','Hey, I’m Gean — Full-stack Software Developer. Chibi Saiki Kusuo with pink hair and green glasses.')+'</p>\n\n<p align="center">\n'
     links=[]
     for slug, link, title in [('portfolio','https://dwi.best','Visit my portfolio'),('email','mailto:dwi@haunt.gg','Email dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Explore my repositories')]:
         links.append(f'<a href="{link}">{picture("contact-"+slug,title,"31%")}</a>')

@@ -1,9 +1,9 @@
 # Profile header
 
-The active header uses SVG typography and an embedded transparent chibi Saiki Kusuo image generated with the built-in imagegen tool. The chibi stays still; the header retains its entrance animation and reduced motion support. All assets are local.
+The active header uses SVG typography and an embedded transparent chibi Saiki Kusuo image generated with the built-in imagegen tool. The entire header is static, with no animation CSS or entrance effects. Other README sections retain their animations and reduced motion support. All assets are local.
 
-- Dark: `assets/profile-v5/header-saiki-chibi-dark.svg`
-- Light: `assets/profile-v5/header-saiki-chibi-light.svg`
+- Dark: `assets/profile-v5/header-saiki-chibi-static-dark.svg`
+- Light: `assets/profile-v5/header-saiki-chibi-static-light.svg`
 - Chibi source: `assets/saiki-chibi.png`
 - Generator: `scripts/build_profile.py`
 

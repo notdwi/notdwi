@@ -15,7 +15,8 @@ for ref in references:
     assert tree.getroot().tag == '{http://www.w3.org/2000/svg}svg'
     text = asset.read_text()
     assert '<script' not in text and '<foreignObject' not in text
-    assert 'prefers-reduced-motion' in text, f'Missing reduced motion: {ref}'
+    if '@keyframes' in text:
+        assert 'prefers-reduced-motion' in text, f'Missing reduced motion: {ref}'
     animations += '@keyframes' in text
     for node in tree.iter():
         href = node.get('href') or node.get('{http://www.w3.org/1999/xlink}href')
