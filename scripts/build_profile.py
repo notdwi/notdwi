@@ -1,5 +1,6 @@
 """Build self-contained Saiki artwork with no external image services."""
 from pathlib import Path
+import base64
 from html import escape
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'assets'
@@ -8,6 +9,8 @@ OUTPUT = ROOT / ASSET_URL
 OUTPUT.mkdir(parents=True, exist_ok=True)
 STYLE = '''text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
 .reveal{animation:reveal 1.2s ease-out both}
+.chibi{animation:chibi 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes chibi{50%{transform:translateY(-4px)}}
 .pulse{animation:pulse 3.4s ease-in-out infinite}
 @keyframes reveal{from{opacity:0}to{opacity:1}}
 @keyframes pulse{50%{opacity:.3}}
@@ -19,34 +22,21 @@ def svg(name, width, height, content, title, padding=0):
         height += 2 * padding
     (OUTPUT / name).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title"><title id="title">{escape(title)}</title><style>{STYLE}</style>{content}</svg>')
 def build():
+    chibi = base64.b64encode((ASSETS / 'saiki-chibi.png').read_bytes()).decode()
     for theme, ink, muted, line, pink, sage, jelly, cream in [
         ('dark','#f0e8ef','#bcb0c1','#3b303f','#e8a2bf','#aecab5','#745044','#f0e1d4'),
         ('light','#352a39','#726377','#e7dbe5','#a4406e','#487357','#684338','#f1dfcf'),
     ]:
-        svg(f'header-saiki-emblem-{theme}.svg',1000,270,f'''
+        svg(f'header-saiki-chibi-{theme}.svg',1000,270,f'''
 <g class="reveal">
 <text x="20" y="42" fill="{muted}" font-size="17">やれやれ。</text>
 <text x="16" y="134" fill="{ink}" font-size="78" font-weight="700" letter-spacing="-4">hey, i'm gean.</text>
 <text x="22" y="181" fill="{pink}" font-size="24">Full-stack Software Developer</text>
 <text x="22" y="223" fill="{muted}" font-size="16">@notdwi / Brazil</text>
 </g>
-<!-- Saiki's glasses and psychic limiters, reduced to a small vector emblem. -->
-<g class="reveal" stroke-linecap="round" stroke-linejoin="round">
-<g class="pulse" fill="none" stroke="{pink}" stroke-width="3">
-<path d="M757 79v23m156-23v23"/>
-<circle cx="757" cy="65" r="13" fill="{pink}" fill-opacity=".14"/>
-<circle cx="913" cy="65" r="13" fill="{pink}" fill-opacity=".14"/>
-</g>
-<g transform="rotate(-5 835 143)" stroke="{sage}" stroke-width="3">
-<path d="m741 121 76 4-5 49-64-4Z" fill="{sage}" fill-opacity=".12"/>
-<path d="m851 125 76-4-7 49-64 4Z" fill="{sage}" fill-opacity=".12"/>
-<path d="M818 136q16-9 33 0m-110-5-14-5m200 5 14-5" fill="none"/>
-<path d="m756 133 13 1m96 1 13-1" stroke-width="2" opacity=".6"/>
-</g>
-<path d="M810 205h48" stroke="{pink}" stroke-width="2" opacity=".45"/>
-</g>
+<g class="reveal"><image class="chibi" href="data:image/png;base64,{chibi}" x="705" y="5" width="280" height="245" preserveAspectRatio="xMidYMid meet"/></g>
 <path d="M20 261h960" stroke="{line}"/>
-''','Gean / notdwi — Full-stack Software Developer. Minimal typography with green glasses and pink psychic limiters inspired by Saiki Kusuo.')
+''','Gean / notdwi — Full-stack Software Developer. Minimal typography with a chibi Saiki Kusuo.')
         muted, line = ('#b7aaba', '#39303e') if theme == 'dark' else ('#706376', '#e9dfe9')
         svg(f'saiki-note-{theme}.svg',1000,54,f'<path d="M0 27h360m280 0h360" stroke="{line}"/><text x="500" y="33" text-anchor="middle" font-size="14" fill="{muted}">code, coffee jelly, repeat.</text>', 'Code, coffee jelly, repeat.')
 
@@ -117,7 +107,7 @@ def build_components():
         copyfile(ASSETS / f'wave-{theme}.svg', OUTPUT / f'wave-{theme}.svg')
     def picture(stem,alt,width='100%'):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="{ASSET_URL}/{stem}-dark.svg"><img src="{ASSET_URL}/{stem}-light.svg" width="{width}" alt="{escape(alt,quote=True)}"></picture>'
-    text='<p>'+picture('header-saiki-emblem','Hey, I’m Gean — Full-stack Software Developer. Minimal green glasses and pink psychic limiters inspired by Saiki Kusuo.')+'</p>\n\n<p align="center">\n'
+    text='<p>'+picture('header-saiki-chibi','Hey, I’m Gean — Full-stack Software Developer. Chibi Saiki Kusuo with pink hair and green glasses.')+'</p>\n\n<p align="center">\n'
     links=[]
     for slug, link, title in [('portfolio','https://dwi.best','Visit my portfolio'),('email','mailto:dwi@haunt.gg','Email dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Explore my repositories')]:
         links.append(f'<a href="{link}">{picture("contact-"+slug,title,"31%")}</a>')

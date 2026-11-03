@@ -1,4 +1,4 @@
-<p><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/header-saiki-emblem-dark.svg"><img src="assets/profile-v5/header-saiki-emblem-light.svg" width="100%" alt="Hey, I’m Gean — Full-stack Software Developer. Minimal green glasses and pink psychic limiters inspired by Saiki Kusuo."></picture></p>
+<p><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/header-saiki-chibi-dark.svg"><img src="assets/profile-v5/header-saiki-chibi-light.svg" width="100%" alt="Hey, I’m Gean — Full-stack Software Developer. Chibi Saiki Kusuo with pink hair and green glasses."></picture></p>
 
 <p align="center">
 <a href="https://dwi.best"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v5/contact-portfolio-dark.svg"><img src="assets/profile-v5/contact-portfolio-light.svg" width="31%" alt="Visit my portfolio"></picture></a>
