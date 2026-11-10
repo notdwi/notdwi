@@ -108,11 +108,10 @@ def build():
 <path d="M726 46v94" stroke="{line}"/>
 <text x="758" y="72" font-size="18" fill="{muted}">Currently building</text>
 <text x="758" y="108" font-size="29" fill="{ink}">Noctyra</text>
-<rect x="759" y="128" width="9" height="9" rx="2" fill="{mint}" class="signal"/>
-<text x="781" y="139" font-size="17" fill="{muted}">always learning</text>
+<text x="758" y="139" font-size="17" fill="{muted}">always learning</text>
 <path d="M24 184h952" stroke="{accent}" stroke-width="2" class="track"/>
 '''
-        svg(f'hero-{theme}.svg',1000,186,hero,'Hey, I’m Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra. Current GitHub photo.')
+        svg(f'hero-integrated-{theme}.svg',1000,186,hero,'Hey, I’m Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra. Current GitHub photo.')
         about=panel(1000,310)+f'<text x="28" y="45" font-size="25" font-weight="700" fill="{ink}">A little about me</text>'
         for i,label in enumerate(ABOUT):
             about+=f'<text x="28" y="{84+i*31}" font-size="22" fill="{muted}">{escape(label)}</text>'
