@@ -26,7 +26,7 @@ jobs:
         run: python scripts/validate_profile.py
       - name: Save updated photo
         run: |
-          git add README.md assets/profile-v6 assets/github-avatar.png
+          git add README.md assets/profile-v7 assets/github-avatar.png
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'

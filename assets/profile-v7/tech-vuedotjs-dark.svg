@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="66" viewBox="0 0 240 66" role="img" aria-labelledby="title"><title id="title">Vue</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+.signal{animation:signal 3s ease-in-out infinite}
+.track{stroke-dasharray:70 930;animation:travel 9s linear infinite}
+.cursor{animation:blink 1.4s step-end infinite}
+@keyframes signal{50%{opacity:.35}}
+@keyframes travel{to{stroke-dashoffset:-1000}}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style><rect x="1" y="1" width="238" height="64" rx="14" fill="#161b22" stroke="#303945"/><g transform="translate(17 20) scale(1.0833333333333333)"><path d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z" fill="#c1b5ff"/></g><text x="55" y="41" font-size="21" fill="#f0f3f7">Vue</text></svg>

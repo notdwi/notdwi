@@ -1,34 +1,29 @@
-"""Build the profile. Refresh the GitHub avatar with --refresh-avatar."""
+"""Build a compact GitHub profile and refresh its avatar every six hours."""
 from pathlib import Path
+from html import escape
 import base64
 import json
 import sys
 import urllib.request
-from html import escape
+
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'assets'
-ASSET_URL = 'assets/profile-v6'
+ASSET_URL = 'assets/profile-v7'
 OUTPUT = ROOT / ASSET_URL
 OUTPUT.mkdir(parents=True, exist_ok=True)
 STYLE = """text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
-.reveal{opacity:1}
-.orbit{transform-origin:154px 155px;animation:orbit 36s linear infinite}
-.drift{animation:drift 6s ease-in-out infinite}
-.cursor{animation:blink 1.2s step-end infinite}
-@keyframes reveal{from{opacity:0}to{opacity:1}}
-@keyframes orbit{to{transform:rotate(360deg)}}
-@keyframes drift{50%{transform:translateY(-7px)}}
+.signal{animation:signal 3s ease-in-out infinite}
+.track{stroke-dasharray:70 930;animation:travel 9s linear infinite}
+.cursor{animation:blink 1.4s step-end infinite}
+@keyframes signal{50%{opacity:.35}}
+@keyframes travel{to{stroke-dashoffset:-1000}}
 @keyframes blink{50%{opacity:0}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}"""
-def svg(name, width, height, content, title, padding=0, animated=True):
-    style = STYLE if animated else "text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}"
-    if not animated:
-        content = content.replace(' class="reveal"', '')
-    if padding:
-        content = f'<g transform="translate({padding} {padding})">{content}</g>'
-        width += 2 * padding
-        height += 2 * padding
-    (OUTPUT / name).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title"><title id="title">{escape(title)}</title><style>{style}</style>{content}</svg>')
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+"""
+
+def svg(name, width, height, content, title):
+    (OUTPUT / name).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title"><title id="title">{escape(title)}</title><style>{STYLE}</style>{content}</svg>')
+
 def refresh_avatar():
     # SVG images cannot fetch remote photos on GitHub. Embed a snapshot refreshed every six hours.
     headers = {'User-Agent': 'notdwi-profile', 'Accept': 'application/vnd.github+json'}
@@ -42,45 +37,48 @@ def refresh_avatar():
         raise ValueError('Expected a PNG or JPEG GitHub avatar')
     (ASSETS / 'github-avatar.png').write_bytes(avatar)
 
-def build():
-    avatar_path = ASSETS / 'github-avatar.png'
-    if '--refresh-avatar' in sys.argv or not avatar_path.exists():
-        refresh_avatar()
-    avatar_bytes = avatar_path.read_bytes()
-    avatar_mime = 'image/png' if avatar_bytes.startswith(b'\x89PNG') else 'image/jpeg'
-    avatar = base64.b64encode(avatar_bytes).decode()
-    for theme, bg, ink, muted, line, blue, pink in [
-        ('dark','#171d31','#eef1ff','#aab7d8','#354364','#a3bcff','#e9b8db'),
-        ('light','#edf2ff','#25345b','#53658a','#becded','#355cbd','#a54d87'),
-    ]:
-        svg(f'hero-{theme}.svg',1000,320,f'''<defs>
-<clipPath id="avatar"><circle cx="154" cy="155" r="88"/></clipPath>
-<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="{line}" opacity=".4"/></pattern>
-</defs>
-<rect x="0" y="0" width="1000" height="310" rx="32" fill="{bg}"/>
-<path d="M825 0h143q32 0 32 32v246q0 32-32 32H825Z" fill="url(#dots)"/>
-<circle cx="154" cy="155" r="116" fill="none" stroke="{line}" stroke-dasharray="3 9"/>
-<circle cx="154" cy="155" r="95" fill="none" stroke="{blue}" stroke-width="2"/>
-<g class="orbit"><ellipse cx="154" cy="155" rx="134" ry="108" fill="none" stroke="{blue}" opacity=".25" transform="rotate(-35 154 155)"/>
-<circle cx="154" cy="39" r="7" fill="{pink}"/><circle cx="54" cy="213" r="5" fill="{blue}"/><circle cx="254" cy="213" r="4" fill="{pink}"/></g>
-<image href="data:{avatar_mime};base64,{avatar}" x="66" y="67" width="176" height="176" clip-path="url(#avatar)" preserveAspectRatio="xMidYMid slice"/>
-<g class="reveal"><text x="326" y="79" font-size="20" fill="{muted}">hey, i'm</text>
-<text x="320" y="156" font-size="80" font-weight="700" letter-spacing="-4" fill="{ink}">Gean.</text>
-<text x="326" y="197" font-size="25" fill="{ink}">Full-stack Software Developer</text>
-<text x="326" y="244" font-size="17" fill="{muted}">@notdwi / Brasília, Brazil</text>
-<path d="M326 268h68" stroke="{pink}" stroke-width="4" stroke-linecap="round"/></g>
-<g class="drift" fill="none" stroke="{blue}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".7"><path d="m902 64-14 14 14 14m28-28 14 14-14 14m-9-37-10 46"/></g>
-<g fill="{pink}"><path d="m952 208 2 9 9 2-9 2-2 9-2-9-9-2 9-2Z"/><circle cx="865" cy="267" r="3"/></g>
-''','Gean / notdwi. Full-stack Software Developer based in Brasília, Brazil. Current GitHub profile photo with animated orbits.')
-        svg(f'footer-{theme}.svg',1000,70,f'''<rect width="1000" height="70" rx="22" fill="{bg}"/><text x="500" y="41" text-anchor="middle" font-size="17" fill="{muted}">code, coffee jelly, repeat.</text><g class="cursor"><circle cx="665" cy="35" r="3" fill="{pink}"/></g>''','Code, coffee jelly, repeat.')
 
-def build_components():
-    import json
+TECHS = [
+    ('typescript','TypeScript','https://www.typescriptlang.org/'),
+    ('python','Python','https://www.python.org/'),
+    ('go','Go','https://go.dev/'),
+    ('rust','Rust','https://www.rust-lang.org/'),
+    ('react','React','https://react.dev/'),
+    ('nextjs','Next.js','https://nextjs.org/'),
+    ('vuedotjs','Vue','https://vuejs.org/'),
+    ('nestjs','NestJS','https://nestjs.com/'),
+    ('flask','Flask','https://flask.palletsprojects.com/'),
+    ('tauri','Tauri','https://tauri.app/'),
+    ('database','PostgreSQL','https://www.postgresql.org/'),
+    ('mysql','MySQL','https://www.mysql.com/'),
+    ('archlinux','Linux','https://archlinux.org/'),
+    ('git','Git','https://git-scm.com/'),
+    ('githubactions','GitHub Actions','https://github.com/features/actions'),
+    ('api','REST APIs','https://developer.mozilla.org/en-US/docs/Glossary/REST'),
+]
+PROJECTS = [
+    ('veil','veil','code','A privacy-focused API client.','Local testing with Rust and Tauri.','Rust / Tauri / React'),
+    ('hypronline','HyprOnline','terminal','Anime search in your terminal.','Scraping and direct video streaming.','Python / CLI / Streaming'),
+    ('koeweeb','KoeWeeb','book','A web-based manga reader.','Scraping with a focused reading UI.','Web / Scraping / Manga'),
+    ('pokecenter','PokeCenter','pokeball','Pokémon management platform.','JWT authentication and admin tools.','Next.js / NestJS / PostgreSQL'),
+]
+ABOUT = [
+    "I'm Gean, also known as Dwi, a full-stack developer in Brasília, Brazil.",
+    "I build web apps, REST APIs, data pipelines and developer tools,",
+    "from database modeling to the interface.",
+    "Main languages: TypeScript, Python and Go. Always learning something new.",
+    "I like clean APIs, fast services and good developer experience.",
+    "My workflow includes AI-assisted development, MCP and coding agents.",
+    "Outside the code: Linux, automation and anime.",
+]
+
+def build():
+    if '--refresh-avatar' in sys.argv or not (ASSETS / 'github-avatar.png').exists():
+        refresh_avatar()
+    data = (ASSETS / 'github-avatar.png').read_bytes()
+    mime = 'image/png' if data.startswith(b'\x89PNG') else 'image/jpeg'
+    avatar = base64.b64encode(data).decode()
     icons = json.loads((ROOT / '.profile/icons.json').read_text())
-    palettes = [
-        ('dark', '#171d31', '#eef1ff', '#aab7d8', '#354364', '#a3bcff', '#e9b8db'),
-        ('light', '#edf2ff', '#25345b', '#53658a', '#becded', '#355cbd', '#a54d87'),
-    ]
     def icon(name, x, y, size, color):
         if name in icons['brand']:
             return f'<g transform="translate({x} {y}) scale({size/24})"><path d="{icons["brand"][name]["d"]}" fill="{color}"/></g>'
@@ -96,74 +94,65 @@ def build_components():
         }
         shapes['flask'] = '<path d="M9 3h6m-5 0v7L4 19q-1 2 2 2h12q3 0 2-2l-6-9V3M7 15h10"/>'
         shapes['mysql'] = shapes['database']
+        shapes['nestjs'] = shapes['code']
+        shapes['tauri'] = shapes['terminal']
+        shapes['api'] = shapes['code']
         return f'<g transform="translate({x} {y}) scale({size/24})" fill="none" stroke="{color}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{shapes[name]}</g>'
-    for theme, bg, ink, muted, line, pink, sage in palettes:
-        about_lines = [
-            "I'm Gean, also known as Dwi, a full-stack developer in Brasília, Brazil.",
-            "I build web apps, REST APIs, data pipelines and developer tools,",
-            "from database modeling to the interface.",
-            "I work mainly with TypeScript, Python and Go, and I'm always learning.",
-            "I like clean APIs, fast services and good developer experience.",
-            "My workflow includes AI-assisted development, MCP and coding agents.",
-            "Outside the code: Linux, automation and anime.",
-        ]
-        content=f'<rect width="1000" height="390" rx="26" fill="{bg}"/>'
-        content+=f'<text x="34" y="53" font-size="28" font-weight="600" fill="{ink}">A little about me</text>'
-        for i, label in enumerate(about_lines):
-            content+=f'<text x="34" y="{100+i*33}" font-size="22" fill="{muted}">{escape(label)}</text>'
-        content+=f'<path d="M34 326h932" stroke="{line}"/><text x="34" y="365" font-size="22" fill="{pink}">Currently working on Noctyra.</text>'
-        svg(f'about-{theme}.svg',1000,390,content,'A little about me. '+' '.join(about_lines)+' Currently working on Noctyra.',animated=False)
-        for slug, title in [('stack','Technologies'),('projects','Selected projects')]:
-            content=f'<rect width="1000" height="78" rx="22" fill="{bg}"/><text x="34" y="50" font-size="28" font-weight="600" fill="{ink}">{title}</text>'
-            svg(f'heading-{slug}-{theme}.svg',1000,78,content,title,animated=False)
-        for slug, label, glyph in [('portfolio','Portfolio','globe'),('email','Email','mail'),('github','GitHub','github')]:
-            content = f'<rect x="1" y="1" width="258" height="74" rx="22" fill="{bg}"/>'
-            content += '<g class="reveal">'+icon(glyph,22,24,28,pink)
-            content += f'<text x="67" y="46" font-size="23" fill="{ink}">{label}</text><path d="m223 43 10-10m-10 0h10v10" fill="none" stroke="{sage}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>'
-            svg(f'contact-{slug}-{theme}.svg',260,76,content,label)
-        techs = [('typescript','TypeScript'),('python','Python'),('go','Go'),('react','React'),('nextjs','Next.js'),('vuedotjs','Vue'),('database','PostgreSQL'),('archlinux','Linux'),('flask','Flask'),('mysql','MySQL'),('git','Git'),('githubactions','GitHub Actions')]
-        for n,(glyph,label) in enumerate(techs):
-            content=f'<rect x="1" y="1" width="198" height="74" rx="16" fill="{bg}"/>'
-            content+='<g class="reveal">'+icon(glyph,17,24,28,pink if n%2==0 else sage)
-            content+=f'<text x="57" y="46" font-size="{17 if len(label)>10 else 21}" fill="{ink}">{label}</text></g>'
-            svg(f'compact-tech-{glyph}-{theme}.svg',200,76,content,label,padding=4)
-        projects=[
-            ('veil','veil','code','A privacy-focused API client.','Local testing with Rust and Tauri.','Rust / Tauri / React'),
-            ('hypronline','HyprOnline','terminal','Anime search in your terminal.','Scraping and direct video streaming.','Python / CLI / Streaming'),
-            ('koeweeb','KoeWeeb','book','A web-based manga reader.','Scraping with a focused reading UI.','Web / Scraping / Manga'),
-            ('pokecenter','PokeCenter','pokeball','Pokémon management platform.','JWT authentication and admin tools.','Next.js / NestJS / PostgreSQL'),
-        ]
-        for n,(slug,title,glyph,desc,detail,stack) in enumerate(projects):
-            accent=pink if n%2==0 else sage
-            content=f'<rect x="1" y="1" width="418" height="203" rx="22" fill="{bg}"/>'
-            content+='<g>'+icon(glyph,23,22,27,accent)
-            content+=f'<text x="64" y="45" font-size="27" font-weight="600" fill="{ink}">{title}</text>'
-            content+=f'<path d="m377 40 12-12m-12 0h12v12" fill="none" stroke="{muted}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'
-            content+=f'<text x="24" y="91" font-size="21" fill="{ink}">{escape(desc)}</text><text x="24" y="121" font-size="19" fill="{muted}">{escape(detail)}</text>'
-            content+=f'<path d="M24 148h372" stroke="{line}"/><circle cx="29" cy="177" r="3.5" fill="{accent}"/><text x="42" y="183" font-size="17" fill="{muted}">{escape(stack)}</text></g>'
-            svg(f'compact-card-{slug}-{theme}.svg',420,205,content,f'{title}: {desc} {detail} {stack}',padding=6)
+    for theme, bg, ink, muted, line, accent, mint in [
+        ('dark','#161b22','#f0f3f7','#b0bbc9','#303945','#c1b5ff','#93d5be'),
+        ('light','#f6f8fa','#202834','#556375','#d6dce5','#6852aa','#28765c'),
+    ]:
+        def panel(width,height):
+            return f'<rect x="1" y="1" width="{width-2}" height="{height-2}" rx="14" fill="{bg}" stroke="{line}"/>'
+        hero=panel(1000,186)+f'''<defs><clipPath id="photo"><rect x="29" y="29" width="126" height="126" rx="22"/></clipPath></defs>
+<image href="data:{mime};base64,{avatar}" x="29" y="29" width="126" height="126" clip-path="url(#photo)" preserveAspectRatio="xMidYMid slice"/>
+<text x="184" y="76" font-size="46" font-weight="700" letter-spacing="-1.5" fill="{ink}">hey, i'm Gean.</text>
+<text x="186" y="116" font-size="24" fill="{muted}">Full-stack Software Developer</text>
+<text x="186" y="151" font-size="19" fill="{accent}">@notdwi / Brasília, Brazil</text>
+<path d="M726 46v94" stroke="{line}"/>
+<text x="758" y="72" font-size="18" fill="{muted}">Currently building</text>
+<text x="758" y="108" font-size="29" fill="{ink}">Noctyra</text>
+<rect x="759" y="128" width="9" height="9" rx="2" fill="{mint}" class="signal"/>
+<text x="781" y="139" font-size="17" fill="{muted}">always learning</text>
+<path d="M24 184h952" stroke="{accent}" stroke-width="2" class="track"/>
+'''
+        svg(f'hero-{theme}.svg',1000,186,hero,'Hey, I’m Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra. Current GitHub photo.')
+        about=panel(1000,310)+f'<text x="28" y="45" font-size="25" font-weight="700" fill="{ink}">A little about me</text>'
+        for i,label in enumerate(ABOUT):
+            about+=f'<text x="28" y="{84+i*31}" font-size="22" fill="{muted}">{escape(label)}</text>'
+        svg(f'about-{theme}.svg',1000,310,about,'A little about me. '+' '.join(ABOUT))
+        for slug,title,note in [('stack','Technologies','Languages, frameworks & tools'),('projects','Selected projects','Web, desktop & terminal')]:
+            content=panel(1000,64)+f'<text x="28" y="41" font-size="25" font-weight="700" fill="{ink}">{title}</text><text x="972" y="40" text-anchor="end" font-size="19" fill="{muted}">{escape(note)}</text>'
+            svg(f'heading-{slug}-{theme}.svg',1000,64,content,title)
+        for glyph,label,url in TECHS:
+            content=panel(240,66)+icon(glyph,17,20,26,accent)
+            content+=f'<text x="55" y="41" font-size="21" fill="{ink}">{label}</text>'
+            svg(f'tech-{glyph}-{theme}.svg',240,66,content,label)
+        for slug,label,glyph in [('portfolio','Portfolio','globe'),('email','dwi@haunt.gg','mail'),('github','Repositories','github')]:
+            content=panel(320,62)+icon(glyph,23,18,25,mint)
+            content+=f'<text x="63" y="39" font-size="23" fill="{ink}">{label}</text>'
+            svg(f'contact-{slug}-{theme}.svg',320,62,content,label)
+        for slug,title,glyph,desc,detail,stack in PROJECTS:
+            content=panel(1000,132)+icon(glyph,28,26,28,accent)
+            content+=f'<text x="72" y="48" font-size="27" font-weight="700" fill="{ink}">{title}</text><text x="28" y="96" font-size="18" fill="{muted}">{escape(stack)}</text>'
+            content+=f'<path d="M367 24v84" stroke="{line}"/><text x="395" y="50" font-size="23" fill="{ink}">{escape(desc)}</text><text x="395" y="87" font-size="21" fill="{muted}">{escape(detail)}</text>'
+            svg(f'project-{slug}-{theme}.svg',1000,132,content,f'{title}: {desc} {detail} {stack}')
+        content=panel(1000,54)+f'<text x="28" y="35" font-size="18" fill="{muted}">code, coffee jelly, repeat.</text><path d="M946 28h24" stroke="{mint}" stroke-width="2" class="cursor"/>'
+        svg(f'footer-{theme}.svg',1000,54,content,'Code, coffee jelly, repeat.')
     def picture(stem,alt,width='100%'):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="{ASSET_URL}/{stem}-dark.svg"><img src="{ASSET_URL}/{stem}-light.svg" width="{width}" alt="{escape(alt,quote=True)}"></picture>'
-    text='<p>'+picture('hero','Hey, I’m Gean — Full-stack Software Developer in Brasília, Brazil. Current GitHub profile photo.')+'</p>\n\n<p align="center">\n'
-    links=[]
-    for slug, link, title in [('portfolio','https://dwi.best','Visit my portfolio'),('email','mailto:dwi@haunt.gg','Email dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Explore my repositories')]:
-        links.append(f'<a href="{link}">{picture("contact-"+slug,title,"31%")}</a>')
-    text+='\n  '.join(links)+'\n</p>\n\n'
-    text+='<p>'+picture('about', 'A little about me. '+ ' '.join(about_lines)+' Currently working on Noctyra.')+'</p>\n\n'
-    text+='<p>'+picture('heading-stack','Technologies')+'</p>\n\n'
-    urls={'typescript':'https://www.typescriptlang.org/','python':'https://www.python.org/','go':'https://go.dev/','react':'https://react.dev/','nextjs':'https://nextjs.org/','vuedotjs':'https://vuejs.org/','database':'https://www.postgresql.org/','archlinux':'https://archlinux.org/','flask':'https://flask.palletsprojects.com/','mysql':'https://www.mysql.com/','git':'https://git-scm.com/','githubactions':'https://github.com/features/actions'}
-    for row in [techs[i:i+4] for i in range(0,len(techs),4)]:
-        text+='<p align="center">\n'
-        text+='\n  '.join(f'<a href="{urls[glyph]}">{picture("compact-tech-"+glyph,label,"24%")}</a>' for glyph,label in row)
-        text+='\n</p>\n\n'
-    text+='<p>'+picture('heading-projects','Selected projects')+'</p>\n\n'
-    for row in [[('veil','veil'),('hypronline','HyprOnline')],[('koeweeb','KoeWeeb'),('pokecenter','PokeCenter')]]:
-        text+='<p align="center">\n'
-        text+='\n  '.join(f'<a href="https://github.com/notdwi/{name}">{picture("compact-card-"+slug,next(f"{title}: {desc} {detail} {stack}" for project_slug,title,glyph,desc,detail,stack in projects if project_slug==slug),"49%")}</a>' for slug,name in row)
-        text+='\n</p>\n\n'
-    text+='\n'+picture('footer','Code, coffee jelly, repeat.')+'\n'
-    (ROOT/'README.md').write_text(text)
+    blocks=['<p>'+picture('hero','Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra.')+'</p>']
+    contacts=[('portfolio','https://dwi.best','Portfolio'),('email','mailto:dwi@haunt.gg','dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Repositories')]
+    blocks.append('<p>'+ '\n'.join(f'<a href="{url}">{picture("contact-"+slug,label,"32%")}</a>' for slug,url,label in contacts)+'</p>')
+    blocks.append('<p>'+picture('about','A little about me. '+' '.join(ABOUT))+'</p>')
+    blocks.append('<p>'+picture('heading-stack','Technologies: languages, frameworks and tools')+'</p>')
+    for start in range(0,len(TECHS),4):
+        blocks.append('<p>'+ '\n'.join(f'<a href="{url}">{picture("tech-"+glyph,label,"24%")}</a>' for glyph,label,url in TECHS[start:start+4])+'</p>')
+    blocks.append('<p>'+picture('heading-projects','Selected projects: web, desktop and terminal')+'</p>')
+    for slug,title,glyph,desc,detail,stack in PROJECTS:
+        blocks.append(f'<p><a href="https://github.com/notdwi/{title}">{picture("project-"+slug,f"{title}: {desc} {detail} {stack}")}</a></p>')
+    blocks.append('<p>'+picture('footer','Code, coffee jelly, repeat.')+'</p>')
+    (ROOT/'README.md').write_text('\n\n'.join(blocks)+'\n')
 
 if __name__ == '__main__':
     build()
-    build_components()

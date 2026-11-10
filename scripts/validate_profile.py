@@ -29,7 +29,7 @@ print(f'Validated {len(references)} local images, embedded artwork and reduced m
 
 assert 'saiki' not in readme.lower(), 'Use the current GitHub avatar, not Saiki'
 for theme in ('dark', 'light'):
-    hero = (root / f'assets/profile-v6/hero-{theme}.svg').read_text()
+    hero = (root / f'assets/profile-v7/hero-{theme}.svg').read_text()
     avatar = base64.b64encode((root / 'assets/github-avatar.png').read_bytes()).decode()
     assert avatar in hero, 'Header must embed the latest downloaded profile photo'
 print('Current profile photo embedded in both themes; Saiki removed from README.')

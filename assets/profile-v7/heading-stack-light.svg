@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="64" viewBox="0 0 1000 64" role="img" aria-labelledby="title"><title id="title">Technologies</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+.signal{animation:signal 3s ease-in-out infinite}
+.track{stroke-dasharray:70 930;animation:travel 9s linear infinite}
+.cursor{animation:blink 1.4s step-end infinite}
+@keyframes signal{50%{opacity:.35}}
+@keyframes travel{to{stroke-dashoffset:-1000}}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style><rect x="1" y="1" width="998" height="62" rx="14" fill="#f6f8fa" stroke="#d6dce5"/><text x="28" y="41" font-size="25" font-weight="700" fill="#202834">Technologies</text><text x="972" y="40" text-anchor="end" font-size="19" fill="#556375">Languages, frameworks &amp; tools</text></svg>
