@@ -1,4 +1,4 @@
-<p><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v7/hero-dark.svg"><img src="assets/profile-v7/hero-light.svg" width="100%" alt="Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra."></picture></p>
+<p><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v7/hero-clean-dark.svg"><img src="assets/profile-v7/hero-clean-light.svg" width="100%" alt="Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra."></picture></p>
 
 <p><a href="https://dwi.best"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v7/contact-portfolio-dark.svg"><img src="assets/profile-v7/contact-portfolio-light.svg" width="32%" alt="Portfolio"></picture></a>
 <a href="mailto:dwi@haunt.gg"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v7/contact-email-dark.svg"><img src="assets/profile-v7/contact-email-light.svg" width="32%" alt="dwi@haunt.gg"></picture></a>
@@ -37,5 +37,3 @@
 <p><a href="https://github.com/notdwi/KoeWeeb"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v7/project-koeweeb-dark.svg"><img src="assets/profile-v7/project-koeweeb-light.svg" width="100%" alt="KoeWeeb: A web-based manga reader. Scraping with a focused reading UI. Web / Scraping / Manga"></picture></a></p>
 
 <p><a href="https://github.com/notdwi/PokeCenter"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v7/project-pokecenter-dark.svg"><img src="assets/profile-v7/project-pokecenter-light.svg" width="100%" alt="PokeCenter: Pokémon management platform. JWT authentication and admin tools. Next.js / NestJS / PostgreSQL"></picture></a></p>
-
-<p><picture><source media="(prefers-color-scheme: dark)" srcset="assets/profile-v7/footer-dark.svg"><img src="assets/profile-v7/footer-light.svg" width="100%" alt="Code, coffee jelly, repeat."></picture></p>

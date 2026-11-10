@@ -1,9 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="320" height="62" viewBox="0 0 320 62" role="img" aria-labelledby="title"><title id="title">Portfolio</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
-.signal{animation:signal 3s ease-in-out infinite}
 .track{stroke-dasharray:70 930;animation:travel 9s linear infinite}
-.cursor{animation:blink 1.4s step-end infinite}
-@keyframes signal{50%{opacity:.35}}
 @keyframes travel{to{stroke-dashoffset:-1000}}
-@keyframes blink{50%{opacity:0}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style><rect x="1" y="1" width="318" height="60" rx="14" fill="#f6f8fa" stroke="#d6dce5"/><g transform="translate(23 18) scale(1.0416666666666667)" fill="none" stroke="#28765c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g><text x="63" y="39" font-size="23" fill="#202834">Portfolio</text></svg>

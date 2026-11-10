@@ -12,12 +12,8 @@ ASSET_URL = 'assets/profile-v7'
 OUTPUT = ROOT / ASSET_URL
 OUTPUT.mkdir(parents=True, exist_ok=True)
 STYLE = """text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
-.signal{animation:signal 3s ease-in-out infinite}
 .track{stroke-dasharray:70 930;animation:travel 9s linear infinite}
-.cursor{animation:blink 1.4s step-end infinite}
-@keyframes signal{50%{opacity:.35}}
 @keyframes travel{to{stroke-dashoffset:-1000}}
-@keyframes blink{50%{opacity:0}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 """
 
@@ -112,11 +108,10 @@ def build():
 <path d="M726 46v94" stroke="{line}"/>
 <text x="758" y="72" font-size="18" fill="{muted}">Currently building</text>
 <text x="758" y="108" font-size="29" fill="{ink}">Noctyra</text>
-<rect x="759" y="128" width="9" height="9" rx="2" fill="{mint}" class="signal"/>
-<text x="781" y="139" font-size="17" fill="{muted}">always learning</text>
+<text x="758" y="139" font-size="17" fill="{muted}">always learning</text>
 <path d="M24 184h952" stroke="{accent}" stroke-width="2" class="track"/>
 '''
-        svg(f'hero-{theme}.svg',1000,186,hero,'Hey, I’m Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra. Current GitHub photo.')
+        svg(f'hero-clean-{theme}.svg',1000,186,hero,'Hey, I’m Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra. Current GitHub photo.')
         about=panel(1000,310)+f'<text x="28" y="45" font-size="25" font-weight="700" fill="{ink}">A little about me</text>'
         for i,label in enumerate(ABOUT):
             about+=f'<text x="28" y="{84+i*31}" font-size="22" fill="{muted}">{escape(label)}</text>'
@@ -137,11 +132,9 @@ def build():
             content+=f'<text x="72" y="48" font-size="27" font-weight="700" fill="{ink}">{title}</text><text x="28" y="96" font-size="18" fill="{muted}">{escape(stack)}</text>'
             content+=f'<path d="M367 24v84" stroke="{line}"/><text x="395" y="50" font-size="23" fill="{ink}">{escape(desc)}</text><text x="395" y="87" font-size="21" fill="{muted}">{escape(detail)}</text>'
             svg(f'project-{slug}-{theme}.svg',1000,132,content,f'{title}: {desc} {detail} {stack}')
-        content=panel(1000,54)+f'<text x="28" y="35" font-size="18" fill="{muted}">code, coffee jelly, repeat.</text><path d="M946 28h24" stroke="{mint}" stroke-width="2" class="cursor"/>'
-        svg(f'footer-{theme}.svg',1000,54,content,'Code, coffee jelly, repeat.')
     def picture(stem,alt,width='100%'):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="{ASSET_URL}/{stem}-dark.svg"><img src="{ASSET_URL}/{stem}-light.svg" width="{width}" alt="{escape(alt,quote=True)}"></picture>'
-    blocks=['<p>'+picture('hero','Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra.')+'</p>']
+    blocks=['<p>'+picture('hero-clean','Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra.')+'</p>']
     contacts=[('portfolio','https://dwi.best','Portfolio'),('email','mailto:dwi@haunt.gg','dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Repositories')]
     blocks.append('<p>'+ '\n'.join(f'<a href="{url}">{picture("contact-"+slug,label,"32%")}</a>' for slug,url,label in contacts)+'</p>')
     blocks.append('<p>'+picture('about','A little about me. '+' '.join(ABOUT))+'</p>')
@@ -151,7 +144,6 @@ def build():
     blocks.append('<p>'+picture('heading-projects','Selected projects: web, desktop and terminal')+'</p>')
     for slug,title,glyph,desc,detail,stack in PROJECTS:
         blocks.append(f'<p><a href="https://github.com/notdwi/{title}">{picture("project-"+slug,f"{title}: {desc} {detail} {stack}")}</a></p>')
-    blocks.append('<p>'+picture('footer','Code, coffee jelly, repeat.')+'</p>')
     (ROOT/'README.md').write_text('\n\n'.join(blocks)+'\n')
 
 if __name__ == '__main__':
