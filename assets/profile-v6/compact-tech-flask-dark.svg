@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="208" height="84" viewBox="0 0 208 84" role="img" aria-labelledby="title"><title id="title">Flask</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+.reveal{opacity:1}
+.orbit{transform-origin:154px 155px;animation:orbit 36s linear infinite}
+.drift{animation:drift 6s ease-in-out infinite}
+.cursor{animation:blink 1.2s step-end infinite}
+@keyframes reveal{from{opacity:0}to{opacity:1}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes drift{50%{transform:translateY(-7px)}}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><g transform="translate(4 4)"><rect x="1" y="1" width="198" height="74" rx="16" fill="#171d31"/><g class="reveal"><g transform="translate(17 24) scale(1.1666666666666667)" fill="none" stroke="#a3bcff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6m-5 0v7L4 19q-1 2 2 2h12q3 0 2-2l-6-9V3M7 15h10"/></g><text x="57" y="46" font-size="21" fill="#eef1ff">Flask</text></g></g></svg>

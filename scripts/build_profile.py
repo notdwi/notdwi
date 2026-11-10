@@ -30,7 +30,7 @@ def svg(name, width, height, content, title, padding=0, animated=True):
         height += 2 * padding
     (OUTPUT / name).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title"><title id="title">{escape(title)}</title><style>{style}</style>{content}</svg>')
 def refresh_avatar():
-    # SVG images cannot fetch remote photos on GitHub. Embed a daily snapshot.
+    # SVG images cannot fetch remote photos on GitHub. Embed a snapshot refreshed every six hours.
     headers = {'User-Agent': 'notdwi-profile', 'Accept': 'application/vnd.github+json'}
     req = urllib.request.Request('https://api.github.com/users/notdwi', headers=headers)
     with urllib.request.urlopen(req, timeout=30) as response:
@@ -72,7 +72,7 @@ def build():
 <g class="drift" fill="none" stroke="{blue}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".7"><path d="m902 64-14 14 14 14m28-28 14 14-14 14m-9-37-10 46"/></g>
 <g fill="{pink}"><path d="m952 208 2 9 9 2-9 2-2 9-2-9-9-2 9-2Z"/><circle cx="865" cy="267" r="3"/></g>
 ''','Gean / notdwi. Full-stack Software Developer based in Brasília, Brazil. Current GitHub profile photo with animated orbits.')
-        svg(f'footer-{theme}.svg',1000,70,f'''<path d="M0 35h320m360 0h320" stroke="{line}"/><text x="500" y="41" text-anchor="middle" font-size="17" fill="{muted}">code, coffee jelly, repeat.</text><g class="cursor"><circle cx="665" cy="35" r="3" fill="{pink}"/></g>''','Code, coffee jelly, repeat.')
+        svg(f'footer-{theme}.svg',1000,70,f'''<rect width="1000" height="70" rx="22" fill="{bg}"/><text x="500" y="41" text-anchor="middle" font-size="17" fill="{muted}">code, coffee jelly, repeat.</text><g class="cursor"><circle cx="665" cy="35" r="3" fill="{pink}"/></g>''','Code, coffee jelly, repeat.')
 
 def build_components():
     import json
@@ -94,18 +94,38 @@ def build_components():
             'code': '<path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/>',
             'pokeball': '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M3 12h6m6 0h6"/>',
         }
+        shapes['flask'] = '<path d="M9 3h6m-5 0v7L4 19q-1 2 2 2h12q3 0 2-2l-6-9V3M7 15h10"/>'
+        shapes['mysql'] = shapes['database']
         return f'<g transform="translate({x} {y}) scale({size/24})" fill="none" stroke="{color}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{shapes[name]}</g>'
     for theme, bg, ink, muted, line, pink, sage in palettes:
+        about_lines = [
+            "I'm Gean, also known as Dwi, a full-stack developer in Brasília, Brazil.",
+            "I build web apps, REST APIs, data pipelines and developer tools,",
+            "from database modeling to the interface.",
+            "I work mainly with TypeScript, Python and Go, and I'm always learning.",
+            "I like clean APIs, fast services and good developer experience.",
+            "My workflow includes AI-assisted development, MCP and coding agents.",
+            "Outside the code: Linux, automation and anime.",
+        ]
+        content=f'<rect width="1000" height="390" rx="26" fill="{bg}"/>'
+        content+=f'<text x="34" y="53" font-size="28" font-weight="600" fill="{ink}">A little about me</text>'
+        for i, label in enumerate(about_lines):
+            content+=f'<text x="34" y="{100+i*33}" font-size="22" fill="{muted}">{escape(label)}</text>'
+        content+=f'<path d="M34 326h932" stroke="{line}"/><text x="34" y="365" font-size="22" fill="{pink}">Currently working on Noctyra.</text>'
+        svg(f'about-{theme}.svg',1000,390,content,'A little about me. '+' '.join(about_lines)+' Currently working on Noctyra.',animated=False)
+        for slug, title in [('stack','Technologies'),('projects','Selected projects')]:
+            content=f'<rect width="1000" height="78" rx="22" fill="{bg}"/><text x="34" y="50" font-size="28" font-weight="600" fill="{ink}">{title}</text>'
+            svg(f'heading-{slug}-{theme}.svg',1000,78,content,title,animated=False)
         for slug, label, glyph in [('portfolio','Portfolio','globe'),('email','Email','mail'),('github','GitHub','github')]:
             content = f'<rect x="1" y="1" width="258" height="74" rx="22" fill="{bg}"/>'
             content += '<g class="reveal">'+icon(glyph,22,24,28,pink)
             content += f'<text x="67" y="46" font-size="23" fill="{ink}">{label}</text><path d="m223 43 10-10m-10 0h10v10" fill="none" stroke="{sage}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>'
             svg(f'contact-{slug}-{theme}.svg',260,76,content,label)
-        techs = [('typescript','TypeScript'),('python','Python'),('go','Go'),('react','React'),('nextjs','Next.js'),('vuedotjs','Vue'),('database','PostgreSQL'),('archlinux','Linux')]
+        techs = [('typescript','TypeScript'),('python','Python'),('go','Go'),('react','React'),('nextjs','Next.js'),('vuedotjs','Vue'),('database','PostgreSQL'),('archlinux','Linux'),('flask','Flask'),('mysql','MySQL'),('git','Git'),('githubactions','GitHub Actions')]
         for n,(glyph,label) in enumerate(techs):
-            content=f'<rect x="1" y="1" width="198" height="74" rx="12" fill="none"/>'
+            content=f'<rect x="1" y="1" width="198" height="74" rx="16" fill="{bg}"/>'
             content+='<g class="reveal">'+icon(glyph,17,24,28,pink if n%2==0 else sage)
-            content+=f'<text x="57" y="46" font-size="21" fill="{ink}">{label}</text></g>'
+            content+=f'<text x="57" y="46" font-size="{17 if len(label)>10 else 21}" fill="{ink}">{label}</text></g>'
             svg(f'compact-tech-{glyph}-{theme}.svg',200,76,content,label,padding=4)
         projects=[
             ('veil','veil','code','A privacy-focused API client.','Local testing with Rust and Tauri.','Rust / Tauri / React'),
@@ -116,7 +136,6 @@ def build_components():
         for n,(slug,title,glyph,desc,detail,stack) in enumerate(projects):
             accent=pink if n%2==0 else sage
             content=f'<rect x="1" y="1" width="418" height="203" rx="22" fill="{bg}"/>'
-            content+=f'<circle cx="365" cy="170" r="26" fill="{accent}" opacity=".06"/>'
             content+='<g>'+icon(glyph,23,22,27,accent)
             content+=f'<text x="64" y="45" font-size="27" font-weight="600" fill="{ink}">{title}</text>'
             content+=f'<path d="m377 40 12-12m-12 0h12v12" fill="none" stroke="{muted}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'
@@ -130,22 +149,14 @@ def build_components():
     for slug, link, title in [('portfolio','https://dwi.best','Visit my portfolio'),('email','mailto:dwi@haunt.gg','Email dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Explore my repositories')]:
         links.append(f'<a href="{link}">{picture("contact-"+slug,title,"31%")}</a>')
     text+='\n  '.join(links)+'\n</p>\n\n'
-    text += """### A little about me
-
-I'm Gean, also known as **Dwi**, a full-stack developer based in **Brasília, Brazil**. I build web apps, REST APIs, data pipelines and developer tools, from database modeling to the interface.
-
-I work mainly with **TypeScript, Python and Go**. I like clean APIs, fast services and good developer experience, and I'm always learning something new. My workflow includes AI-assisted development, MCP and coding agents. Outside the code: Linux, automation and anime.
-
-Currently working on **Noctyra**.
-
-"""
-    text+='### Technologies\n\n'
-    urls={'typescript':'https://www.typescriptlang.org/','python':'https://www.python.org/','go':'https://go.dev/','react':'https://react.dev/','nextjs':'https://nextjs.org/','vuedotjs':'https://vuejs.org/','database':'https://www.postgresql.org/','archlinux':'https://archlinux.org/'}
-    for row in [techs[:4],techs[4:]]:
+    text+='<p>'+picture('about', 'A little about me. '+ ' '.join(about_lines)+' Currently working on Noctyra.')+'</p>\n\n'
+    text+='<p>'+picture('heading-stack','Technologies')+'</p>\n\n'
+    urls={'typescript':'https://www.typescriptlang.org/','python':'https://www.python.org/','go':'https://go.dev/','react':'https://react.dev/','nextjs':'https://nextjs.org/','vuedotjs':'https://vuejs.org/','database':'https://www.postgresql.org/','archlinux':'https://archlinux.org/','flask':'https://flask.palletsprojects.com/','mysql':'https://www.mysql.com/','git':'https://git-scm.com/','githubactions':'https://github.com/features/actions'}
+    for row in [techs[i:i+4] for i in range(0,len(techs),4)]:
         text+='<p align="center">\n'
         text+='\n  '.join(f'<a href="{urls[glyph]}">{picture("compact-tech-"+glyph,label,"24%")}</a>' for glyph,label in row)
         text+='\n</p>\n\n'
-    text+='Also in my toolkit: **Flask, MySQL, Git and GitHub Actions**.\n\n### Selected projects\n\n'
+    text+='<p>'+picture('heading-projects','Selected projects')+'</p>\n\n'
     for row in [[('veil','veil'),('hypronline','HyprOnline')],[('koeweeb','KoeWeeb'),('pokecenter','PokeCenter')]]:
         text+='<p align="center">\n'
         text+='\n  '.join(f'<a href="https://github.com/notdwi/{name}">{picture("compact-card-"+slug,next(f"{title}: {desc} {detail} {stack}" for project_slug,title,glyph,desc,detail,stack in projects if project_slug==slug),"49%")}</a>' for slug,name in row)

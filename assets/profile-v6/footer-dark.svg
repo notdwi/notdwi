@@ -7,4 +7,4 @@
 @keyframes orbit{to{transform:rotate(360deg)}}
 @keyframes drift{50%{transform:translateY(-7px)}}
 @keyframes blink{50%{opacity:0}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><path d="M0 35h320m360 0h320" stroke="#354364"/><text x="500" y="41" text-anchor="middle" font-size="17" fill="#aab7d8">code, coffee jelly, repeat.</text><g class="cursor"><circle cx="665" cy="35" r="3" fill="#e9b8db"/></g></svg>
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><rect width="1000" height="70" rx="22" fill="#171d31"/><text x="500" y="41" text-anchor="middle" font-size="17" fill="#aab7d8">code, coffee jelly, repeat.</text><g class="cursor"><circle cx="665" cy="35" r="3" fill="#e9b8db"/></g></svg>
