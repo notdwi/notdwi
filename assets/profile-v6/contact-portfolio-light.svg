@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="76" viewBox="0 0 260 76" role="img" aria-labelledby="title"><title id="title">Portfolio</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+.reveal{opacity:1}
+.orbit{transform-origin:154px 155px;animation:orbit 36s linear infinite}
+.drift{animation:drift 6s ease-in-out infinite}
+.cursor{animation:blink 1.2s step-end infinite}
+@keyframes reveal{from{opacity:0}to{opacity:1}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes drift{50%{transform:translateY(-7px)}}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><rect x="1" y="1" width="258" height="74" rx="22" fill="#edf2ff"/><g class="reveal"><g transform="translate(22 24) scale(1.1666666666666667)" fill="none" stroke="#355cbd" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g><text x="67" y="46" font-size="23" fill="#25345b">Portfolio</text><path d="m223 43 10-10m-10 0h10v10" fill="none" stroke="#a54d87" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g></svg>

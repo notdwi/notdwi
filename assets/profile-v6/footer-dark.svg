@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="70" viewBox="0 0 1000 70" role="img" aria-labelledby="title"><title id="title">Code, coffee jelly, repeat.</title><style>text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
+.reveal{opacity:1}
+.orbit{transform-origin:154px 155px;animation:orbit 36s linear infinite}
+.drift{animation:drift 6s ease-in-out infinite}
+.cursor{animation:blink 1.2s step-end infinite}
+@keyframes reveal{from{opacity:0}to{opacity:1}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes drift{50%{transform:translateY(-7px)}}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style><path d="M0 35h320m360 0h320" stroke="#354364"/><text x="500" y="41" text-anchor="middle" font-size="17" fill="#aab7d8">code, coffee jelly, repeat.</text><g class="cursor"><circle cx="665" cy="35" r="3" fill="#e9b8db"/></g></svg>

@@ -23,6 +23,13 @@ for ref in references:
         if href:
             assert href.startswith('data:image/'), f'External SVG dependency: {ref}'
             base64.b64decode(href.split(',',1)[1],validate=True)
-assert animations >= 2, 'Keep animated cover and wave'
+assert animations >= 2, 'Keep animated header and footer'
 assert 'style=' not in readme, 'Use GitHub-compatible markup'
 print(f'Validated {len(references)} local images, embedded artwork and reduced motion support.')
+
+assert 'saiki' not in readme.lower(), 'Use the current GitHub avatar, not Saiki'
+for theme in ('dark', 'light'):
+    hero = (root / f'assets/profile-v6/hero-{theme}.svg').read_text()
+    avatar = base64.b64encode((root / 'assets/github-avatar.png').read_bytes()).decode()
+    assert avatar in hero, 'Header must embed the latest downloaded profile photo'
+print('Current profile photo embedded in both themes; Saiki removed from README.')
