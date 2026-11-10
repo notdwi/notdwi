@@ -110,7 +110,9 @@ def build():
             svg(f'project-{slug}-{theme}.svg',1000,132,content,f'{title}: {desc} {detail} {stack}')
     def picture(stem,alt,width='100%'):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="{ASSET_URL}/{stem}-dark.svg"><img src="{ASSET_URL}/{stem}-light.svg" width="{width}" alt="{escape(alt,quote=True)}"></picture>'
-    blocks=['<p align="center"><a href="https://github.com/notdwi"><img src="https://github.com/notdwi.png?size=320" width="112" height="112" alt="Current GitHub profile photo of Gean / Dwi"></a></p>', '<p>'+picture('hero-live','Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra.')+'</p>']
+    # GitHub removes image border-radius styles; a live image proxy supplies transparent rounded edges.
+    avatar_url = 'https://wsrv.nl/?url=github.com%2Fnotdwi.png&amp;w=320&amp;h=320&amp;fit=cover&amp;mask=circle&amp;output=png&amp;maxage=60'
+    blocks=[f'<p><a href="https://github.com/notdwi"><img src="{avatar_url}" width="16%" alt="Current GitHub profile photo of Gean / Dwi"></a>\n'+picture('hero-live','Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra.','82%')+'</p>']
     contacts=[('portfolio','https://dwi.best','Portfolio'),('email','mailto:dwi@haunt.gg','dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Repositories')]
     blocks.append('<p>'+ '\n'.join(f'<a href="{url}">{picture("contact-"+slug,label,"32%")}</a>' for slug,url,label in contacts)+'</p>')
     blocks.append('<p>'+picture('about','A little about me. '+' '.join(ABOUT))+'</p>')
