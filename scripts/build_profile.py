@@ -1,10 +1,7 @@
-"""Build a compact GitHub profile and refresh its avatar every six hours."""
+"""Build profile artwork; the README loads the live GitHub avatar directly."""
 from pathlib import Path
 from html import escape
-import base64
 import json
-import sys
-import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'assets'
@@ -19,20 +16,6 @@ STYLE = """text{font-family:'Trebuchet MS','DejaVu Sans',sans-serif}
 
 def svg(name, width, height, content, title):
     (OUTPUT / name).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title"><title id="title">{escape(title)}</title><style>{STYLE}</style>{content}</svg>')
-
-def refresh_avatar():
-    # SVG images cannot fetch remote photos on GitHub. Embed a snapshot refreshed every six hours.
-    headers = {'User-Agent': 'notdwi-profile', 'Accept': 'application/vnd.github+json'}
-    req = urllib.request.Request('https://api.github.com/users/notdwi', headers=headers)
-    with urllib.request.urlopen(req, timeout=30) as response:
-        profile = json.load(response)
-    req = urllib.request.Request(profile['avatar_url'] + '&s=460', headers={'User-Agent': 'notdwi-profile'})
-    with urllib.request.urlopen(req, timeout=30) as response:
-        avatar = response.read()
-    if not (avatar.startswith(b'\x89PNG\r\n\x1a\n') or avatar.startswith(b'\xff\xd8')):
-        raise ValueError('Expected a PNG or JPEG GitHub avatar')
-    (ASSETS / 'github-avatar.png').write_bytes(avatar)
-
 
 TECHS = [
     ('typescript','TypeScript','https://www.typescriptlang.org/'),
@@ -69,11 +52,6 @@ ABOUT = [
 ]
 
 def build():
-    if '--refresh-avatar' in sys.argv or not (ASSETS / 'github-avatar.png').exists():
-        refresh_avatar()
-    data = (ASSETS / 'github-avatar.png').read_bytes()
-    mime = 'image/png' if data.startswith(b'\x89PNG') else 'image/jpeg'
-    avatar = base64.b64encode(data).decode()
     icons = json.loads((ROOT / '.profile/icons.json').read_text())
     def icon(name, x, y, size, color):
         if name in icons['brand']:
@@ -100,18 +78,16 @@ def build():
     ]:
         def panel(width,height):
             return f'<rect x="1" y="1" width="{width-2}" height="{height-2}" rx="14" fill="{bg}" stroke="{line}"/>'
-        hero=panel(1000,186)+f'''<defs><clipPath id="photo"><rect x="29" y="29" width="126" height="126" rx="22"/></clipPath></defs>
-<image href="data:{mime};base64,{avatar}" x="29" y="29" width="126" height="126" clip-path="url(#photo)" preserveAspectRatio="xMidYMid slice"/>
-<text x="184" y="76" font-size="46" font-weight="700" letter-spacing="-1.5" fill="{ink}">hey, i'm Gean.</text>
-<text x="186" y="116" font-size="24" fill="{muted}">Full-stack Software Developer</text>
-<text x="186" y="151" font-size="19" fill="{accent}">@notdwi / Brasília, Brazil</text>
-<path d="M726 46v94" stroke="{line}"/>
-<text x="758" y="72" font-size="18" fill="{muted}">Currently building</text>
-<text x="758" y="108" font-size="29" fill="{ink}">Noctyra</text>
-<text x="758" y="139" font-size="17" fill="{muted}">always learning</text>
-<path d="M24 184h952" stroke="{accent}" stroke-width="2" class="track"/>
+        hero=panel(840,164)+f'''<text x="28" y="56" font-size="43" font-weight="700" letter-spacing="-1.5" fill="{ink}">hey, i'm Gean.</text>
+<text x="30" y="94" font-size="24" fill="{muted}">Full-stack Software Developer</text>
+<text x="30" y="130" font-size="19" fill="{accent}">@notdwi / Brasília, Brazil</text>
+<path d="M570 30v102" stroke="{line}"/>
+<text x="602" y="54" font-size="18" fill="{muted}">Currently building</text>
+<text x="602" y="91" font-size="29" fill="{ink}">Noctyra</text>
+<text x="602" y="126" font-size="17" fill="{muted}">always learning</text>
+<path d="M24 162h792" stroke="{accent}" stroke-width="2" class="track"/>
 '''
-        svg(f'hero-clean-{theme}.svg',1000,186,hero,'Hey, I’m Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra. Current GitHub photo.')
+        svg(f'hero-live-{theme}.svg',840,164,hero,'Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra.')
         about=panel(1000,310)+f'<text x="28" y="45" font-size="25" font-weight="700" fill="{ink}">A little about me</text>'
         for i,label in enumerate(ABOUT):
             about+=f'<text x="28" y="{84+i*31}" font-size="22" fill="{muted}">{escape(label)}</text>'
@@ -134,7 +110,7 @@ def build():
             svg(f'project-{slug}-{theme}.svg',1000,132,content,f'{title}: {desc} {detail} {stack}')
     def picture(stem,alt,width='100%'):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="{ASSET_URL}/{stem}-dark.svg"><img src="{ASSET_URL}/{stem}-light.svg" width="{width}" alt="{escape(alt,quote=True)}"></picture>'
-    blocks=['<p>'+picture('hero-clean','Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra.')+'</p>']
+    blocks=['<p><a href="https://github.com/notdwi"><img src="https://github.com/notdwi.png?size=320" width="16%" alt="Current GitHub profile photo of Gean / Dwi"></a>\n'+picture('hero-live','Gean / Dwi (@notdwi). Full-stack Software Developer in Brasília, Brazil. Currently building Noctyra.','82%')+'</p>']
     contacts=[('portfolio','https://dwi.best','Portfolio'),('email','mailto:dwi@haunt.gg','dwi@haunt.gg'),('github','https://github.com/notdwi?tab=repositories','Repositories')]
     blocks.append('<p>'+ '\n'.join(f'<a href="{url}">{picture("contact-"+slug,label,"32%")}</a>' for slug,url,label in contacts)+'</p>')
     blocks.append('<p>'+picture('about','A little about me. '+' '.join(ABOUT))+'</p>')

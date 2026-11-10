@@ -28,8 +28,8 @@ assert 'style=' not in readme, 'Use GitHub-compatible markup'
 print(f'Validated {len(references)} local images, embedded artwork and reduced motion support.')
 
 assert 'saiki' not in readme.lower(), 'Use the current GitHub avatar, not Saiki'
+assert 'https://github.com/notdwi.png?size=320' in readme, 'Load the current avatar directly from GitHub'
 for theme in ('dark', 'light'):
-    hero = (root / f'assets/profile-v7/hero-clean-{theme}.svg').read_text()
-    avatar = base64.b64encode((root / 'assets/github-avatar.png').read_bytes()).decode()
-    assert avatar in hero, 'Header must embed the latest downloaded profile photo'
-print('Current profile photo embedded in both themes; Saiki removed from README.')
+    hero = (root / f'assets/profile-v7/hero-live-{theme}.svg').read_text()
+    assert '<image' not in hero, 'Do not embed a stale avatar snapshot'
+print('Avatar loads directly from GitHub without a scheduled snapshot.')
